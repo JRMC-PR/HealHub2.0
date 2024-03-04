@@ -31,10 +31,11 @@ def dashboard(response, id):
     user = Accounts.objects.get(id=id)
     first_name = user.first_name
     last_name = user.last_name
-    if user.is_doctor:
-        return render(response, "accounts/dashboard.html", {'first_name': first_name, 'last_name': last_name})
-    else:
-      return HttpResponse('<h1>WELCOME TO YOUR DASHBOARD %s %s!</h1>' % (first_name, last_name))
+    contact_list = user.contact_list.all()
+    # if user.is_doctor:
+    return render(response, "accounts/dashboard.html", {'first_name': first_name, 'last_name': last_name, 'contact_list': contact_list, 'is_doctor': user.is_doctor})
+    # else:
+    # return HttpResponse('<h1>WELCOME TO YOUR DASHBOARD %s %s!</h1>' % (first_name, last_name))
 
 
 

@@ -47,6 +47,7 @@ class Accounts(models.Model):
     email = models.EmailField(max_length=200)
     password = models.CharField(max_length=200, default="password")
     phone_number = models.CharField(max_length=200)
+    contact_list = models.ManyToManyField("self", blank=True)
     office_address = models.CharField(max_length=200, default="None")
     is_doctor = models.BooleanField(default=False)
     specialty = models.CharField(max_length=200, default="General")
