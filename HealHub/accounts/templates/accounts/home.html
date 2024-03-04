@@ -9,16 +9,18 @@
         <button type="submit">Sign Up</button> {% endcomment %}
         <form method="post" action="/home/">
             {% csrf_token %}
-            <input type="hidden" name="login-form">
-            {{ login_form.as_p }}
-            <button type="submit">Log in</button>
-          </form>
-
-          <form method="post" action="/home/">
-            {% csrf_token %}
-            <input type="hidden" name="signup-form">
-            {{ signup_form.as_p }}
-            <button type="submit">Sign up</button>
+            <h1>Sign Up</h1>
+            <span>Use your Email for registration</span>
+            {% for field in signup_form %}
+            <div class="mt-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="{{ field.id_for_label }}">
+                    {{ field.label }}
+                </label>
+                <input type="{{ field.field.widget.input_type }}" name="{{ field.name }}" id="{{ field.id_for_label }}" placeholder="{{ field.label }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
+            </div>
+            {% endfor %}
+            <br></br>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Sign Up</button>
           </form>
     {% comment %} </form> {% endcomment %}
 {% endblock %}
