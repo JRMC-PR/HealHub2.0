@@ -3,10 +3,23 @@
 {% block content %}
     <h1>Welcome To HealHub!</h1>
     <p>Sign up to get started or Login</p>
-    <form method="post" action="/home/">
-        {% csrf_token %}
+    {% comment %} <form method="post" action="/home/"> {% endcomment %}
+        {% comment %} {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Sign Up</button>
-    </form>
+        <button type="submit">Sign Up</button> {% endcomment %}
+        <form method="post" action="/home/">
+            {% csrf_token %}
+            <input type="hidden" name="login-form">
+            {{ login_form.as_p }}
+            <button type="submit">Log in</button>
+          </form>
+
+          <form method="post" action="/home/">
+            {% csrf_token %}
+            <input type="hidden" name="signup-form">
+            {{ signup_form.as_p }}
+            <button type="submit">Sign up</button>
+          </form>
+    {% comment %} </form> {% endcomment %}
 {% endblock %}
 ```

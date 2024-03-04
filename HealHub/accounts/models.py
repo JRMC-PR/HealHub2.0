@@ -5,6 +5,7 @@
     django user cmodels comes with these default fields
     """
 from django.db import models
+import uuid
 
 # Create your models here.
 # class Doctor(models.Model):
@@ -39,9 +40,15 @@ from django.db import models
 #     def __str__(self):
 #         return f"{self.first_name} {self.last_name} {self.email} {self.phone_number} {self.is_doctor}"
 
+def unique_username():
+    """Generates a unique username"""
+    return f"username{uuid.uuid4().hex[:40]}"
+
+
 class Accounts(models.Model):
     """This is the custom user model"""
     #pulic fields for the user
+    USERNAME_FIELD = models.CharField(max_length=40, default=unique_username)
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
     email = models.EmailField(max_length=200)
