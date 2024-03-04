@@ -1,0 +1,12 @@
+{% extends "accounts/base.html" %}
+
+{% block content %}
+    <h1>Welcome To HealHub!</h1>
+    <p>Sign up to get started or Login</p>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Sign Up</button>
+    </form>
+{% endblock %}
+```
