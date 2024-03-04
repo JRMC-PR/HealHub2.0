@@ -1,27 +1,39 @@
 {% extends "accounts/base.html" %}
 
 {% block content %}
-    <h1>Welcome To HealHub!</h1>
+    <title>Welcome To HealHub!</title>
     <p>Sign up to get started or Login</p>
-    {% comment %} <form method="post" action="/home/"> {% endcomment %}
-        {% comment %} {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Sign Up</button> {% endcomment %}
-        <form method="post" action="/home/">
-            {% csrf_token %}
-            <h1>Sign Up</h1>
-            <span>Use your Email for registration</span>
-            {% for field in signup_form %}
-            <div class="mt-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="{{ field.id_for_label }}">
-                    {{ field.label }}
-                </label>
-                <input type="{{ field.field.widget.input_type }}" name="{{ field.name }}" id="{{ field.id_for_label }}" placeholder="{{ field.label }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
+    <form method="post" action="/home/">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="form-group">
+                {{ field.label_tag }}
+                {{ field }}
+                {% if field.help_text %}
+                    <small class="form-text text-muted">{{ field.help_text }}</small>
+                {% endif %}
+                {% if field.errors %}
+                    <div class="alert alert-danger form-error" style="font-size: 0.8em;">
+                        {% for error in field.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
             </div>
-            {% endfor %}
-            <br></br>
-            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Sign Up</button>
-          </form>
-    {% comment %} </form> {% endcomment %}
+        {% endfor %}
+        <button type="submit" class="btn btn-primary">Sign Up</button>
+    </form>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        // Hide the errors initially
+        $(".form-error").hide();
+
+        // Show the errors when the form is submitted
+        $("form").submit(function() {
+            $(".form-error").show();
+        });
+    });
+    </script>
 {% endblock %}
-```
