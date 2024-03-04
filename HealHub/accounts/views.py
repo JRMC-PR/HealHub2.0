@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from.models import Accounts
 from .forms import SignupForm
@@ -6,7 +6,24 @@ from .forms import SignupForm
 # Create your views here.
 
 def home(response):
-    form = SignupForm()
+    if response.method == "POST":
+      form = SignupForm(response.POST)
+      if form.is_valid():
+          first_name = form.cleaned_data["first_name"]
+          last_name = form.cleaned_data["last_name"]
+          email = form.cleaned_data["email"]
+          password = form.cleaned_data["password"]
+          confirm_password = form.cleaned_data["confirm_password"]
+          is_doctor = form.cleaned_data["is_doctor"]
+          phone_number = form.cleaned_data["phone_number"]
+          if password == confirm_password:
+              user = Accounts(first_name=first_name, last_name=last_name, email=email, password=password, is_doctor=is_doctor, phone_number=phone_number)
+              user.save()
+              return redirect("dashboard", id=user.id)
+          else:
+              return HttpResponse('<h1>THE PASSWORDS DO NOT MATCH</h1>')
+    else:
+        form = SignupForm()
     return render(response, "accounts/home.html", {"form": form})
 
 

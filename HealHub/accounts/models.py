@@ -45,8 +45,9 @@ class Accounts(models.Model):
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
     email = models.EmailField(max_length=200)
+    password = models.CharField(max_length=200, default="password")
     phone_number = models.CharField(max_length=200)
-    office_address = models.CharField(max_length=200)
+    office_address = models.CharField(max_length=200, default="None")
     is_doctor = models.BooleanField(default=False)
     specialty = models.CharField(max_length=200, default="General")
     created_at = models.DateTimeField(auto_now_add=True) #This sets the time of creation

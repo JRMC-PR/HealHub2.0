@@ -3,7 +3,7 @@
 {% block content %}
     <h1>Welcome To HealHub!</h1>
     <p>Sign up to get started or Login</p>
-    <form method="post">
+    <form method="post" action="/home/">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Sign Up</button>
