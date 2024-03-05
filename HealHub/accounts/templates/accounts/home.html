@@ -1,8 +1,28 @@
 {% extends "accounts/base.html" %}
 
+
+
+
+{% block content %}
+<div style="text-align: center; margin-top: 20%;">
+    <h1>Welcome to HealHub</h1>
+    <p>The one-stop hub for all your health needs.</p>
+    <!-- Button for Login -->
+    <a href="{% url 'register' %}" style="text-decoration: none; color: white; background-color: #007bff; padding: 10px 20px; margin: 5px; border-radius: 5px; display: inline-block;">Login</a>
+    <!-- Button for Signup -->
+    <a href="{% url 'signup' %}" style="text-decoration: none; color: white; background-color: #28a745; padding: 10px 20px; margin: 5px; border-radius: 5px; display: inline-block;">Signup</a>
+</div>
+
+{% endblock %}
+
+
+
+
+
+{% comment %}
 {% block content %}
     <title>Welcome To HealHub!</title>
-    <p>Sign up to get started or Login</p>
+    <h1>Sign up to get started or Login</h1>
     <form method="post" action="/home/">
         {% csrf_token %}
         {% for field in form %}
@@ -22,6 +42,7 @@
             </div>
         {% endfor %}
         <button type="submit" class="btn btn-primary">Sign Up</button>
+        <a href="{% url 'login' %}" class="btn btn-primary">Already have an account? Login</a>
     </form>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -36,4 +57,4 @@
         });
     });
     </script>
-{% endblock %}
+{% endblock %} {% endcomment %}

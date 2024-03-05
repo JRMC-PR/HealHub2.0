@@ -2,30 +2,23 @@
 
 {% block content %}
 <div class="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
-  <div class="relative py-3 sm:max-w-xl sm:mx-auto">
-    <div class="absolute inset-0 bg-gradient-to-r from-blue-300 to-blue-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
-    <div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
-      <div class="max-w-md mx-auto">
-        <div>
-          <h1 class="text-2xl font-semibold">Welcome to your Dashboard, {{ first_name }} {{ last_name }}!</h1>
-        </div>
-        <div class="divide-y divide-gray-200">
-          <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
-            <p>Your Contacts:</p>
-            <ul class="list-disc space-y-2">
+  <div class="relative py-3 sm:max-w-4xl sm:mx-auto">
+    <div class="absolute inset-0 bg-gradient-to-r from-blue-300 to-blue-600 shadow-lg transform sm:rounded-3xl"></div>
+    <div class="relative bg-white shadow-lg sm:rounded-3xl">
+      <div class="flex justify-between items-center px-4 py-5 sm:px-6">
+        <h1 class="text-lg leading-6 font-medium text-gray-900">Dashboard</h1>
+      </div>
+      <div class="px-4 py-5 sm:p-6">
+        <h2 class="text-2xl font-semibold">Welcome, {{ first_name }} {{ last_name }}!</h2>
+        <div class="mt-4">
+          <h3 class="text-lg font-medium leading-6 text-gray-900">Your Contacts</h3>
+          <div class="mt-2 max-w-xl text-sm text-gray-500">
+            <ul class="list-disc space-y-2 pl-5">
               {% for contact in contact_list %}
-                <li class="flex items-start">
-                  <span class="h-6 flex items-center sm:h-7">
-                    <svg class="flex-shrink-0 h-5 w-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 112-0 1 1 0 01-2 0zm-4 1a1 1 0 100-2 1 1 0 000 2zm6 0a1 1 0 100-2 1 1 0 000 2zm.293 4.707A1 1 0 0013 13h-1v2a1 1 0 11-2 0v-2H9a1 1 0 01-.293-1.707A5.022 5.022 0 0110 11c1.086 0 2.09.421 2.293 1.707z" />
-                    </svg>
-                  </span>
-                  <p class="ml-2">
-                    {{ contact.first_name }} {{ contact.last_name }} - {{ contact.email }}
-                    <br>
-                    <span class="text-gray-500">Phone: {{ contact.phone_number }}</span>
-                  </p>
-                </li>
+              <li>
+                <p class="text-gray-600">{{ contact.first_name }} {{ contact.last_name }} - {{ contact.email }}
+                <span class="text-gray-500">Phone: {{ contact.phone_number }}</span></p>
+              </li>
               {% endfor %}
             </ul>
           </div>

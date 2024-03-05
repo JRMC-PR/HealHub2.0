@@ -4,26 +4,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Accounts
 from .forms import SignupForm, LoginForm
+from django.contrib.auth.forms import UserCreationForm
 
-
-
-
-# def home2(response):
-#     if response.method == "POST":
-#         signup_form = SignupForm(response.POST)
-#         if signup_form.is_valid():
-#             USERNAME_FIELD = signup_form.cleaned_data["username"]
-#             first_name = signup_form.cleaned_data["first_name"]
-#             last_name = signup_form.cleaned_data["last_name"]
-#             email = signup_form.cleaned_data["email"]
-#             password = signup_form.cleaned_data["password"]
-#             confirm_password = signup_form.cleaned_data["confirm_password"]
-#             is_doctor = signup_form.cleaned_data["is_doctor"]
-#             phone_number = signup_form.cleaned_data["phone_number"]
-#         if password == confirm_password:
-#             user = Accounts(**signup_form.cleaned_data)
-#             user.save()
-#             return redirect("/dashboard", id=user.id)
 # Create your views here.
 def home(request):
     if request.method == "POST":
@@ -48,9 +30,34 @@ def home(request):
 
             return redirect("dashboard", id=user.id)
     else:
-        signup_form = SignupForm()
+        form = SignupForm()
     return render(request, "accounts/home.html", {'form': form})
 
+def signup(request):
+    if request.method == "POST":
+        form = SignupForm(request.POST)
+        if form.is_valid():
+            USERNAME_FIELD = form.cleaned_data["USERNAME_FIELD"]
+            first_name = form.cleaned_data["first_name"]
+            last_name = form.cleaned_data["last_name"]
+            email = form.cleaned_data["email"]
+            is_doctor = form.cleaned_data["is_doctor"]
+            phone_number = form.cleaned_data["phone_number"]
+            password = form.cleaned_data["password1"]
+            password2 = form.cleaned_data["password2"]
+            user = Accounts(USERNAME_FIELD=form.cleaned_data["USERNAME_FIELD"],
+                            first_name=form.cleaned_data["first_name"],
+                            last_name=form.cleaned_data["last_name"],
+                            email=form.cleaned_data["email"],
+                            is_doctor=form.cleaned_data["is_doctor"],
+                            phone_number=form.cleaned_data["phone_number"],
+                            password=form.cleaned_data["password1"],)
+            user.save()
+
+            return redirect("dashboard", id=user.id)
+    else:
+        form = SignupForm()
+    return render(request, "accounts/signup.html", {'form': form})
 
 
 def dashboard(response, id):
@@ -64,6 +71,14 @@ def dashboard(response, id):
     # return HttpResponse('<h1>WELCOME TO YOUR DASHBOARD %s %s!</h1>' % (first_name, last_name))
 
 
+def register(response):
+    if response.method == "POST":
+        form = UserCreationForm(response.POST)
+        if form.is_valid():
+            form.save()
+    else:
+        form = UserCreationForm()
+    return render(response, "accounts/login.html", {"form": form})
 
 
 
