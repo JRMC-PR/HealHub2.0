@@ -1,15 +1,44 @@
-{% extends "accounts/base.html" %}
-
-{% block content %}
-<div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh;">
+{% extends "accounts/base.html" %} {% block content %}
+<main class="container mx-auto px-4">
+  <header class="py-8">
+    <div class="container mx-auto flex justify-center items-center flex-col">
+      <h1 class="font-bold text-3xl md:text-5xl text-gray-800 mb-2">
+        What is HealHub?
+      </h1>
+      <p class="text-white text-center mb-8">
+        We are a hub for your healing needs. We help you get closer to whatever
+        it is that you need in regards to your health.
+      </p>
+    </div>
+  </header>
+  <section class="mb-12">
+    <h2 class="text-3xl font-bold text-gray-800 text-center">What We Do</h2>
+    <p class="text-white mt-4 text-center">
+      We provide an easier way for you to book appointments with your doctors.
+    </p>
+  </section>
+  <section class="text-center">
+    <h2 class="font-bold text-3xl text-gray-800 mb-4">
+      Are you ready to take a leap for your health?
+    </h2>
+    <p class="text-white mb-8">Sign Up Now or Login</p>
+    <!--<a href="{% url 'register' %}" class="bg-teal-600 text-white px-5 py-2 rounded hover:bg-teal-700 transition duration-300">Login</a>
+        <a href="{% url 'register' %}" class="bg-transparent text-white px-5 py-2 rounded hover:bg-white hover:text-teal-600 transition duration-300 border border-white">Login</a>
+        <a href="{% url 'signup' %}" class="bg-teal-600 text-white px-5 py-2 rounded hover:bg-teal-700 transition duration-300">Signup</a>
+        <a href="{% url 'signup' %}" class="bg-transparent text-white px-5 py-2 rounded hover:bg-white hover:text-teal-600 transition duration-300 border border-white">Signup</a>
+        --><a href="{% url 'register' %}" class="custom-btn">Login</a>
+    <a href="{% url 'signup' %}" class="custom-btn">Signup</a>
+  </section>
+</main>
+<!--<div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh;">
     <h1>Welcome to HealHub</h1>
     <p>The one-stop hub for all your health needs.</p>
-    <!-- Buttons container -->
+    button container
     <div style="display: flex; justify-content: center;">
-        <!-- Button for Login -->
+        login button
         <a href="{% url 'login' %}" style="text-decoration: none; color: white; background-color: #008080; padding: 10px 20px; margin: 5px; border-radius: 5px;">Login</a>
-        <!-- Button for Signup -->
+        signup button
         <a href="{% url 'signup' %}" style="text-decoration: none; color: white; background-color: #008080; padding: 10px 20px; margin: 5px; border-radius: 5px;">Signup</a>
     </div>
-</div>
+</div>-->
 {% endblock %}
