@@ -2,5 +2,9 @@
 
 {% block content %}
 <h1> Login </h1>
-<a href="{% url 'signup' %}" style="text-decoration: none; color: white; background-color: #28a745; padding: 10px 20px; margin: 5px; border-radius: 5px; display: inline-block;">Signup</a>
+<form method="post" class="form-grop">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Login</button>
+<a href="{% url 'signup' %}" style="text-decoration: none; color: white; background-color: #008080; padding: 10px 20px; margin: 5px; border-radius: 5px; display: inline-block;">Signup</a>
 {% endblock %}

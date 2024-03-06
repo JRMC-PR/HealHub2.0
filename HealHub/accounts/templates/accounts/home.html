@@ -1,20 +1,18 @@
 {% extends "accounts/base.html" %}
 
-
-
-
 {% block content %}
-<div style="text-align: center; margin-top: 20%;">
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh;">
     <h1>Welcome to HealHub</h1>
     <p>The one-stop hub for all your health needs.</p>
-    <!-- Button for Login -->
-    <a href="{% url 'register' %}" style="text-decoration: none; color: white; background-color: #007bff; padding: 10px 20px; margin: 5px; border-radius: 5px; display: inline-block;">Login</a>
-    <!-- Button for Signup -->
-    <a href="{% url 'signup' %}" style="text-decoration: none; color: white; background-color: #28a745; padding: 10px 20px; margin: 5px; border-radius: 5px; display: inline-block;">Signup</a>
+    <!-- Buttons container -->
+    <div style="display: flex; justify-content: center;">
+        <!-- Button for Login -->
+        <a href="{% url 'login' %}" style="text-decoration: none; color: white; background-color: #008080; padding: 10px 20px; margin: 5px; border-radius: 5px;">Login</a>
+        <!-- Button for Signup -->
+        <a href="{% url 'signup' %}" style="text-decoration: none; color: white; background-color: #008080; padding: 10px 20px; margin: 5px; border-radius: 5px;">Signup</a>
+    </div>
 </div>
-
 {% endblock %}
-
 
 
 
