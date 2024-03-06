@@ -1,7 +1,5 @@
-from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
-from django.contrib.auth.forms import UserCreationForm
+from .forms import RegisterForm
 
 
 # home view
@@ -18,7 +16,7 @@ def home(request):
     return render(request, "accounts/home.html")
 
 # signup view
-def signup(request):
+def signup(response):
     """
     Handles the signup process. If the request method is POST, it validates the form data and creates a new user account.
     If the request method is not POST, it initializes an empty form.
@@ -31,36 +29,36 @@ def signup(request):
         Otherwise, it renders the signup form.
     """
     # Check if the request method is POST
-    if request.method == "POST":
+    if response.method == "POST":
         # Initialize the form with the POST data
-        form = UserCreationForm(request.POST)
-        return render(request, "accounts/signup.html", {'form': form})
+        form = RegisterForm(response.POST)
+        print(form.data)
+        if form.is_valid():
+            form.save()
+            user = form.save()
+            return redirect('dashboard' , username = user.username)
+        else:
+            print(form.errors)
     else:
         # Initialize an empty form
-        form = UserCreationForm()
+        form = RegisterForm()
     # Render the signup form
-    return render(request, "accounts/signup.html", {'form': form})
+    return render(response, "accounts/signup.html", {'form': form})
 
 
 
-def dashboard(response, id):
-    """
-    Fetches the user with the given ID and renders the dashboard page with the user's details.
+from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.models import User
 
-    Args:
-        response (HttpResponse): The HTTP response instance.
-        id (int): The ID of the user.
+def dashboard(request, username):
+    # Fetch the user with the given username
+    user = get_object_or_404(User, username=username)
 
-    Returns:
-        HttpResponse: The HTTP response. Renders the dashboard page with the user's details.
-    """
-    # Fetch the user with the given ID
-    user = user.objects.get(id=id)
     # Extract the user's details
     first_name = user.first_name
     last_name = user.last_name
-    contact_list = user.contact_list.all()
+
     # Render the dashboard page with the user's details
-    return render(response, "accounts/dashboard.html", {'first_name': first_name, 'last_name': last_name, 'contact_list': contact_list, 'is_doctor': user.is_doctor})
+    return render(request, "accounts/dashboard.html", {'first_name': first_name, 'last_name': last_name})
 
 

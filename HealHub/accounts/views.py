@@ -1,7 +1,5 @@
-from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
-from django.contrib.auth.forms import UserCreationForm
+from .forms import RegisterForm
 
 
 # home view
@@ -33,11 +31,13 @@ def signup(request):
     # Check if the request method is POST
     if request.method == "POST":
         # Initialize the form with the POST data
-        form = UserCreationForm(request.POST)
-        return render(request, "accounts/signup.html", {'form': form})
+        form = RegisterForm(request.POST)
+        if form.is_valid:
+            form.save()
+            return redirect('dashboard' , id = form.id)
     else:
         # Initialize an empty form
-        form = UserCreationForm()
+        form = RegisterForm()
     # Render the signup form
     return render(request, "accounts/signup.html", {'form': form})
 
