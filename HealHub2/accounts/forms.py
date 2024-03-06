@@ -8,8 +8,8 @@ class RegisterForm(UserCreationForm):
   A form for creating new users. It includes all the required fields, plus a repeated password.
   """
   email = forms.EmailField()
-  Doctor = forms
+  Doctor = forms.BooleanField(required=False, widget=forms.CheckboxInput)
 
   class Meta:
     model = User
-    fields = ["username", "email", "password1", "password2", "first_name", "last_name"]
+    fields = ["username", "email", "password1", "password2", "first_name", "last_name", "Doctor"]
