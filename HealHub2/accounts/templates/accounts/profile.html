@@ -1,0 +1,19 @@
+{% extends "accounts/base.html"%}
+
+
+{% block content %}
+    <h1>Profile</h1>
+    <br></br>
+    <p>Username: {{ user.username }}</p>
+    <br></br>
+    <p>Email: {{ user.email }}</p>
+    <br></br>
+    <p>First Name: {{ user.first_name }}</p>
+    <br></br>
+    <p>Last Name: {{ user.last_name }}</p>
+    <br></br>
+    <p> Doctor: {{ user.profile.doctor }}</p>
+    <br></br>
+    <p>Joined: {{ user.date_joined }}</p>
+
+{% endblock%}
