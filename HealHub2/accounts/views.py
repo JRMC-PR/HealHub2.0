@@ -57,12 +57,8 @@ def dashboard(request, username):
     # Extract the user's details
     first_name = user.first_name
     last_name = user.last_name
-    doctor = user.is_staff
 
     # Render the dashboard page with the user's details
-    return render(request, "accounts/dashboard.html", {'first_name': first_name, 'last_name': last_name}, {'doctor': doctor})
+    return render(request, "accounts/dashboard.html", {'first_name': first_name, 'last_name': last_name})
 
-
-def profile(request):
-    return render(request, "accounts/profile.html")
 
