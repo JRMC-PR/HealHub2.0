@@ -12,8 +12,13 @@
 </head>
 <body>
     <div id="content" class="min-h-screen flex items-center justify-center bg-gray-100">
-        {% block content %}
-        {% endblock %}
+        {% if user.is_authenticated %}
+            {% block content %}
+            {% endblock %}
+        {% else %}
+
+        {% endif %}
+
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
