@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth import login, authenticate
 from .forms import RegisterForm
 
 
@@ -14,6 +15,7 @@ def home(request):
         HttpResponse: The HTTP response. Renders the home page.
     """
     return render(request, "accounts/home.html")
+
 
 # signup view
 def signup(response):
@@ -34,11 +36,9 @@ def signup(response):
         form = RegisterForm(response.POST)
         print(form.data)
         if form.is_valid():
-            form.save()
             user = form.save()
+            login(response, user)
             return redirect('dashboard' , username = user.username)
-        else:
-            print(form.errors)
     else:
         # Initialize an empty form
         form = RegisterForm()
