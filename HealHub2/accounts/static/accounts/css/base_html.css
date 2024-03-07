@@ -3,6 +3,7 @@ body {
   margin: 0;
   padding: 0;
   color: #333;
+  background-image: linear-gradient(to bottom, #0d9488, #234e52);
 }
 
 header {
@@ -45,7 +46,7 @@ nav {
 }
 
 .card {
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin: 20px;
   padding: 20px;
   width: 30%;
@@ -63,7 +64,9 @@ nav {
   margin-top: 20px;
 }
 
-input, select, textarea {
+input,
+select,
+textarea {
   margin: 10px 0;
   padding: 10px;
   width: 300px;

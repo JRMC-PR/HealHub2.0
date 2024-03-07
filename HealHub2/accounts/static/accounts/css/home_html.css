@@ -1,41 +1,39 @@
-
-/* General Background */
-body {
-    background-image: linear-gradient(to bottom, #0d9488, #234e52);
-}
-
-/* Navbar Styles */
+/* Navbar Styles 
 .navbar-expand-lg {
-    background-color: #234e52; /* Match the footer background for consistency */
+    background-color: #234e52; /* Match the footer background for consistency 
 }
 
 .navbar-brand, .navbar-nav .nav-link {
-    color: white !important; /* Override Bootstrap's colors */
+    color: white !important; /* Override Bootstrap's colors 
 }
 
 .navbar-toggler {
-    border-color: white !important; /* Make the toggle button visible */
+    border-color: white !important; /* Make the toggle button visible 
 }
 
 .navbar-toggler-icon {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
+*/
 
 /* Custom Buttons */
 .custom-btn {
     padding: 10px 20px;
     margin: 5px;
     border-radius: 5px;
-    border: 2px solid white; /* Customize the border color */
+    border: 2px solid white;
+    /* Customize the border color */
     background-color: transparent;
-    color: white; /* Initial text color */
+    color: white;
+    /* Initial text color */
     text-decoration: none;
     transition: all 0.3s ease-in-out;
 }
 
 .custom-btn:hover {
     background-color: white;
-    color: #000000; /* Text color on hover */
+    color: #000000;
+    /* Text color on hover */
 }
 
 /* Headers */
@@ -43,8 +41,10 @@ header {
     text-align: center;
 }
 
-.header h1, .header p {
-    color: white; /* Ensuring text is white for visibility against the gradient */
+.header h1,
+.header p {
+    color: white;
+    /* Ensuring text is white for visibility against the gradient */
 }
 
 /* Main Content */
@@ -54,7 +54,8 @@ main {
 
 /* Footer Styles */
 footer {
-    background-color: #234e52; /* Adjust as needed for your design */
+    background-color: #234e52;
+    /* Adjust as needed for your design */
     color: white;
     padding: 20px 0;
     text-align: center;
