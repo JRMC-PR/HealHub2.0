@@ -1,7 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>HealHub</title>
@@ -9,60 +9,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    />
-    {% block extra_css %} {% endblock extra_css%}
-  </head>
-  <body>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+    {% block extra_css %}
+    <link rel="stylesheet" href="/hamburger.css">
+    {% endblock extra_css %}
+</head>
+<body>
     <header>
-      <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-        <a class="navbar-brand" href="{% url 'home' %}">
-          <img
-            src="{% static 'accounts/images/healhublogo.png' %}"
-            width="30"
-            height="30"
-            alt="HealHub Logo"
-          />
-        </a>
-        <div class="navbar-header">
-          <a class="navbar-brand" href="{% url 'home' %}">HealHub</a>
-        </div>
-        <div class="dropdown show">
-            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Menu
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <img src="{% static 'images/healhublogo.png' %}" width="30" height="30" alt="HealHub Logo"/>
             </a>
-
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a class="dropdown-item" href="{% url 'profile'%}">Profile</a>
-                <a class="dropdown-item" href="{% url 'login' %}">Login</a>
-                <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
-              <a class="dropdown-item" href="#">#Help</a>
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{% url 'home' %}">HealHub</a>
             </div>
-            </li>
-          </ul>
-        </div>
-      </nav>
+            <!-- New Hamburger Dropdown -->
+            <section class="p-menu1">
+                <nav id="navbar" class="navigation" role="navigation">
+                    <input id="toggle1" type="checkbox" />
+                    <label class="hamburger1" for="toggle1">
+                        <div class="top"></div>
+                        <div class="meat"></div>
+                        <div class="bottom"></div>
+                    </label>
+                    <nav class="menu1">
+                        <a class="link1" href="{% url 'models' %}">Our Models</a>
+                        <a class="link1" href="{% url 'specialties' %}">Specialties</a>
+                        <a class="link1" href="{% url 'about' %}">About</a>
+                        <a class="link1" href="{% url 'blog' %}">Blog</a>
+                        <a class="link1" href="{% url 'contact' %}">Contact</a>
+                    </nav>
+                </nav>
+            </section>
+        </nav>
     </header>
 
-    <div
-      id="content"
-      class="min-h-screen flex items-center justify-center bg-gray-100"
-    >
-     {% block content %}
-     {% endblock %}
+    <div id="content" class="min-h-screen flex items-center justify-center bg-gray-100">
+        {% if user.is_authenticated %}
+            {% block content %}
+            {% endblock %}
+        {% else %}
+        {% endif %}
     </div>
 
-    <!-- Your body content -->
-
     <footer class="text-center py-4">
-      <p>&copy; 2024 HealHub. All rights reserved.</p>
+        <p>&copy; 2024 HealHub. All rights reserved.</p>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  </body>
+</body>
 </html>
