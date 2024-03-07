@@ -12,9 +12,3 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.username
 
-# Signal to create or update the user profile
-@receiver(post_save, sender=User)
-def update_user_profile(sender, instance, created, **kwargs):
-    if created:
-        Profile.objects.create(user=instance)
-    instance.profile.save()

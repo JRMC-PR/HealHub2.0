@@ -1,7 +1,8 @@
 {% extends "accounts/base.html" %}
+{% load static %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/home_html.css' %}" />
+<link rel="stylesheet" href="{% static 'accounts/css/home_html.css' %}" />
 {% endblock extra_css %}
 
 {% block content %}
@@ -28,23 +29,9 @@
       Are you ready to take a leap for your health?
     </h2>
     <p class="text-white mb-8">Sign Up Now or Login</p>
-    <!--<a href="{% url 'register' %}" class="bg-teal-600 text-white px-5 py-2 rounded hover:bg-teal-700 transition duration-300">Login</a>
-        <a href="{% url 'register' %}" class="bg-transparent text-white px-5 py-2 rounded hover:bg-white hover:text-teal-600 transition duration-300 border border-white">Login</a>
-        <a href="{% url 'signup' %}" class="bg-teal-600 text-white px-5 py-2 rounded hover:bg-teal-700 transition duration-300">Signup</a>
-        <a href="{% url 'signup' %}" class="bg-transparent text-white px-5 py-2 rounded hover:bg-white hover:text-teal-600 transition duration-300 border border-white">Signup</a>
-        --><a href="{% url 'register' %}" class="custom-btn">Login</a>
-    <a href="{% url 'signup' %}" class="custom-btn">Signup</a>
+    <a href="{% url 'login' %}" class="custom-btn" style="background-color: teal; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Login</a>
+    <a href="{% url 'signup' %}" class="custom-btn" style="background-color: teal; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Signup</a>
+
   </section>
 </main>
-<!--<div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh;">
-    <h1>Welcome to HealHub</h1>
-    <p>The one-stop hub for all your health needs.</p>
-    button container
-    <div style="display: flex; justify-content: center;">
-        login button
-        <a href="{% url 'login' %}" style="text-decoration: none; color: white; background-color: #008080; padding: 10px 20px; margin: 5px; border-radius: 5px;">Login</a>
-        signup button
-        <a href="{% url 'signup' %}" style="text-decoration: none; color: white; background-color: #008080; padding: 10px 20px; margin: 5px; border-radius: 5px;">Signup</a>
-    </div>
-</div>-->
 {% endblock %}

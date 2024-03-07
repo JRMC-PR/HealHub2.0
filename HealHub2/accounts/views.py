@@ -34,11 +34,12 @@ def signup(response):
     if response.method == "POST":
         # Initialize the form with the POST data
         form = RegisterForm(response.POST)
-        print(form.data)
         if form.is_valid():
+            print(form.cleaned_data)
             user = form.save()
-            login(response, user)
             return redirect('dashboard' , username = user.username)
+        else:
+            print(form.errors)
     else:
         # Initialize an empty form
         form = RegisterForm()
@@ -54,11 +55,17 @@ def dashboard(request, username):
     # Fetch the user with the given username
     user = get_object_or_404(User, username=username)
 
-    # Extract the user's details
-    first_name = user.first_name
-    last_name = user.last_name
+    # Prepare context data
+    context = {
+        'first_name': user.first_name,
+        'last_name': user.last_name,
+        'doctor': user.profile.doctor,  # Assuming doctor info is stored in Profile model
+    }
 
     # Render the dashboard page with the user's details
-    return render(request, "accounts/dashboard.html", {'first_name': first_name, 'last_name': last_name})
+    return render(request, "accounts/dashboard.html", context)
 
+
+def profile(request):
+    return render(request, "accounts/profile.html")
 

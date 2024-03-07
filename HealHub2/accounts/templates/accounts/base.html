@@ -21,7 +21,7 @@
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="{% url 'home' %}">
           <img
-            src="{% static 'images/healhublogo.png' %}"
+            src="{% static 'accounts/images/healhublogo.png' %}"
             width="30"
             height="30"
             alt="HealHub Logo"
@@ -36,8 +36,9 @@
             </a>
 
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a class="dropdown-item" href="#">{% 'url login' %}</a>
-              <a class="dropdown-item" href="#">#Profile</a>
+                <a class="dropdown-item" href="{% url 'profile'%}">Profile</a>
+                <a class="dropdown-item" href="{% url 'login' %}">Login</a>
+                <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
               <a class="dropdown-item" href="#">#Help</a>
             </div>
             </li>
@@ -50,8 +51,8 @@
       id="content"
       class="min-h-screen flex items-center justify-center bg-gray-100"
     >
-      {% if user.is_authenticated %} {% block content %} {% endblock %} {% else
-      %} {% endif %}
+     {% block content %}
+     {% endblock %}
     </div>
 
     <!-- Your body content -->
