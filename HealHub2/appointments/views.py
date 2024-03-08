@@ -6,6 +6,8 @@ from django.shortcuts import render, redirect
 from django.db import models
 from django.core.mail import send_mail
 from django.conf import settings
+from django.utils import timezone
+from datetime import timedelta
 
 @login_required  # Ensures that only logged-in users can access this view
 def create_appointment(request):
