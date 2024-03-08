@@ -8,6 +8,7 @@ class Profile(models.Model):
     # Your additional fields
     doctor = models.BooleanField(default=False)  # Doctor field, default to False
     specialty = models.CharField(max_length=100, blank=True, null=True)  # Specialty field, can be empty
+    phone = models.CharField(max_length=15, default='1234567890')  # Phone field with a default value
 
     def __str__(self):
         return self.user.username

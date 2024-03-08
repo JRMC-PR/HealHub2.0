@@ -1,0 +1,24 @@
+{% extends "accounts/base.html" %}
+
+{% block content %}
+<h2>Your Appointments</h2>
+
+{% if appointments %}
+<ul>
+    {% for appointment in appointments %}
+    <li>
+        <strong>Date:</strong> {{ appointment.date }}<br>
+        <strong>Time:</strong> {{ appointment.time }}<br>
+        <strong>Doctor:</strong> {{ appointment.doctor.username }} - {{ appointment.doctor.profile.specialty }}<br>
+        <strong>Description:</strong> {{ appointment.description }}
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No appointments found.</p>
+{% endif %}
+
+{% if not is_doctor %}
+    <a href="{% url 'create_appointment' %}" class="btn">Add New Appointment</a>
+{% endif %}
+{% endblock %}

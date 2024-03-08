@@ -1,5 +1,6 @@
 {% extends "accounts/base.html" %}
 
+{% if user.is_authenticated %}
 {% block content %}
 <h2>Create Appointment</h2>
 <form method="post">
@@ -8,3 +9,13 @@
     <button type="submit">Create Appointment</button>
 </form>
 {% endblock %}
+{% else %}
+<div class="profile-header">
+    <h1>Profile</h1>
+    <h2>Are you ready to take a leap for your health?</h2>
+    <p>Sign Up Now or Login</p>
+    <a href="{% url 'login' %}" class="custom-btn login-btn">Login</a>
+    <a href="{% url 'signup' %}" class="custom-btn signup-btn">Signup</a>
+</div>
+{% endif %}
+```

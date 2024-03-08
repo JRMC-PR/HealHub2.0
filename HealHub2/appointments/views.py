@@ -1,6 +1,9 @@
-from django.shortcuts import render, redirect
 from .forms import AppointmentForm
+from .models import Appointment
+from accounts.models import Profile
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
+from django.db import models
 
 @login_required  # Ensures that only logged-in users can access this view
 def create_appointment(request):
@@ -16,3 +19,18 @@ def create_appointment(request):
         form = AppointmentForm()
     return render(request, 'appointments/create_appointment.html', {'form': form})
 
+@login_required
+def user_appointments(request):
+    # Get the current user's profile to check if they are a doctor
+    user_profile = Profile.objects.get(user=request.user)
+    is_doctor = user_profile.doctor
+
+    # Get all appointments where the user is either the doctor or the patient
+    appointments = Appointment.objects.filter(models.Q(doctor=request.user) | models.Q(patient=request.user))
+
+    context = {
+        'appointments': appointments,
+        'is_doctor': is_doctor,
+    }
+
+    return render(request, 'appointments/appointments.html', context)
