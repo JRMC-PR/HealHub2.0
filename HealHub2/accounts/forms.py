@@ -10,7 +10,7 @@ class RegisterForm(UserCreationForm):
     fields, plus a repeated password and fields for Profile model.
     Inherits from UserCreationForm which provides password validation.
     """
-    email = forms.EmailField()  # Email field
+    email = forms.EmailField(required=True)  # Email field
     doctor_choices = [
         (True, 'Yes'),
         (False, 'No')

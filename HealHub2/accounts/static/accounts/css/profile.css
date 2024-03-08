@@ -1,0 +1,35 @@
+.profile-page {
+  color: black;
+  background: linear-gradient(to right, #009999, #e6f7f7); /* Adjust the gradient to match your teal gradient */
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.profile-header h1, .profile-header h2 {
+  color: #004d4d; /* Darker shade of teal for headers */
+}
+
+.profile-info p {
+  margin: 10px 0;
+}
+
+.custom-btn {
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.login-btn {
+  background-color: #007777; /* Teal variant for login */
+}
+
+.signup-btn {
+  background-color: #004d4d; /* Darker teal for signup */
+}
+
+.profile-info strong {
+  font-weight: bold;
+}

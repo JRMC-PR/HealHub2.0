@@ -8,7 +8,7 @@
 /* body {
   margin: 20px 0;
   overflow: auto;
- 
+
   color: #fff;
 } */
 
@@ -74,7 +74,7 @@ a {
 /* Menu */
 .menu1 {
   width: 100%;
-  background-color: #02173F;
+  background-color: teal;
   margin: 0;
   display: -ms-grid;
   display: grid;

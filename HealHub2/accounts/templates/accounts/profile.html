@@ -1,19 +1,27 @@
 {% extends "accounts/base.html"%}
 
-
 {% block content %}
-    <h1>Profile</h1>
-    <br></br>
-    <p>Username: {{ user.username }}</p>
-    <br></br>
-    <p>Email: {{ user.email }}</p>
-    <br></br>
-    <p>First Name: {{ user.first_name }}</p>
-    <br></br>
-    <p>Last Name: {{ user.last_name }}</p>
-    <br></br>
-    <p> Doctor: {{ user.profile.doctor }}</p>
-    <br></br>
-    <p>Joined: {{ user.date_joined }}</p>
-
-{% endblock%}
+<div class="profile-page">
+    {% if user.is_authenticated %}
+        <div class="profile-header">
+            <h1>Profile</h1>
+        </div>
+        <div class="profile-info">
+            <p><strong>Username:</strong> {{ user.username }}</p>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+            <p><strong>First Name:</strong> {{ user.first_name }}</p>
+            <p><strong>Last Name:</strong> {{ user.last_name }}</p>
+            <p><strong>Doctor:</strong> {{ user.profile.doctor|yesno:"Yes,No" }}</p>
+            <p><strong>Joined:</strong> {{ user.date_joined|date:"F d, Y" }}</p>
+        </div>
+    {% else %}
+        <div class="profile-header">
+            <h1>Profile</h1>
+            <h2>Are you ready to take a leap for your health?</h2>
+            <p>Sign Up Now or Login</p>
+            <a href="{% url 'login' %}" class="custom-btn login-btn">Login</a>
+            <a href="{% url 'signup' %}" class="custom-btn signup-btn">Signup</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -11,7 +11,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
     {% block extra_css %}
-    <link rel="stylesheet" href="/hamburger.css">
+    <link rel="stylesheet" href="/static/accounts/css/hamburger.css">
     {% endblock extra_css %}
 </head>
 <body>
@@ -34,11 +34,19 @@
                         <div class="bottom"></div>
                     </label>
                     <nav class="menu1">
-                        <a class="link1" href="{% url 'models' %}">Our Models</a>
-                        <a class="link1" href="{% url 'specialties' %}">Specialties</a>
-                        <a class="link1" href="{% url 'about' %}">About</a>
-                        <a class="link1" href="{% url 'blog' %}">Blog</a>
-                        <a class="link1" href="{% url 'contact' %}">Contact</a>
+                        {% comment %} <a class="link1" href="{% url 'login' %}">Login</a> {% endcomment %}
+                        <a class="link1" href="{% url 'home' %}">Home</a>
+                        {% if user.is_authenticated %}
+                        <span class="link1">Welcome, {{ user.username }}</span>
+                        <a class="link1" href="{% url 'profile' %}">Profile</a>
+                        <a class="link1" href="{% url 'logout' %}">Logout</a>
+                        {% else %}
+                        <a class="link1" href="{% url 'login' %}">Login</a>
+                        {% endif %}
+
+                        {% comment %} <a class="link1" href="{% url 'about' %}">About</a> {% endcomment %}
+                        {% comment %} <a class="link1" href="{% url 'blog' %}">Blog</a> {% endcomment %}
+                        {% comment %} <a class="link1" href="{% url 'contact' %}">Contact</a> {% endcomment %}
                     </nav>
                 </nav>
             </section>
@@ -46,11 +54,8 @@
     </header>
 
     <div id="content" class="min-h-screen flex items-center justify-center bg-gray-100">
-        {% if user.is_authenticated %}
             {% block content %}
             {% endblock %}
-        {% else %}
-        {% endif %}
     </div>
 
     <footer class="text-center py-4">

@@ -3,6 +3,7 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'accounts/css/home_html.css' %}" />
+<link rel="stylesheet" href="{% static 'accounts/css/hamburger.css' %}" />
 {% endblock extra_css %}
 
 {% block content %}
@@ -25,12 +26,16 @@
     </p>
   </section>
   <section class="text-center">
+
+    {% if user.is_authenticated%}
+    {% else %}
     <h2 class="font-bold text-3xl text-gray-800 mb-4">
       Are you ready to take a leap for your health?
     </h2>
     <p class="text-white mb-8">Sign Up Now or Login</p>
     <a href="{% url 'login' %}" class="custom-btn" style="background-color: teal; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Login</a>
     <a href="{% url 'signup' %}" class="custom-btn" style="background-color: teal; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Signup</a>
+    {% endif %}
 
   </section>
 </main>
