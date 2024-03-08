@@ -12,9 +12,10 @@ def create_appointment(request):
         if form.is_valid():
             appointment = form.save(commit=False)
             appointment.patient = request.user  # Set the logged-in user as the patient
+            appointment.phone = request.user.profile.phone # Set the phone field to the user's phone
             appointment.save()  # Now save the appointment to the database
             form.save_m2m()  # Required for saving many-to-many relationships, if any (e.g., if you later add such fields to your model)
-            return redirect('appointment_success')  # Assuming you have a success URL
+            return redirect('appointments')  # Assuming you have a success URL
     else:
         form = AppointmentForm()
     return render(request, 'appointments/create_appointment.html', {'form': form})

@@ -8,7 +8,7 @@ class Appointment(models.Model):
     date = models.DateField()
     time = models.TimeField()
     description = models.TextField()
-    phone = models.CharField(max_length=15, default='1234567890')  # Phone field with a default value
+    phone = models.CharField(max_length=15, default='7877512266')  # Phone field with a default value
 
     def clean(self):
         # Ensure the referenced doctor user has a profile marked as a doctor

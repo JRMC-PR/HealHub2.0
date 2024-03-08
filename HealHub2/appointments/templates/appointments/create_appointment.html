@@ -6,7 +6,7 @@
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Create Appointment</button>
+    <button type="submit" style="background-color: teal; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Create Appointment</button>
 </form>
 {% endblock %}
 {% else %}
@@ -14,7 +14,7 @@
     <h1>Profile</h1>
     <h2>Are you ready to take a leap for your health?</h2>
     <p>Sign Up Now or Login</p>
-    <a href="{% url 'login' %}" class="custom-btn login-btn">Login</a>
+    <a href="{% url 'login' %}" class="custom-btn login-btn" >Login</a>
     <a href="{% url 'signup' %}" class="custom-btn signup-btn">Signup</a>
 </div>
 {% endif %}

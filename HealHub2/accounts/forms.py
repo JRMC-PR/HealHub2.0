@@ -15,6 +15,7 @@ class RegisterForm(UserCreationForm):
         (True, 'Yes'),
         (False, 'No')
     ] # Doctor choices
+    phone = forms.CharField(max_length=15, initial='7877512266')
 
     doctor = forms.ChoiceField(choices=doctor_choices, widget=forms.RadioSelect, help_text="Are you a doctor?")  # Doctor field
     specialty = forms.CharField(required=False, help_text="Specify your specialty if you are a doctor.")  # Specialty field
@@ -46,7 +47,8 @@ class RegisterForm(UserCreationForm):
                 user=user,
                 defaults={
                     'doctor': doctor_status, # Set doctor field
-                    'specialty': self.cleaned_data.get('specialty', '')  # Set specialty field
+                    'specialty': self.cleaned_data.get('specialty', ''),  # Set specialty field
+                    'phone': self.cleaned_data.get('phone', ''),
                 }
             )
         return user  # Return User instance

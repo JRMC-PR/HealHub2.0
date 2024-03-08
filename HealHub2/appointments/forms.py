@@ -1,7 +1,8 @@
 from django import forms
 from django.contrib.auth.models import User
-from django.db.models import F, Value as V
-from django.db.models.functions import Concat
+from django.core.exceptions import ValidationError
+from django.utils import timezone
+from datetime import datetime, timedelta
 from .models import Appointment
 
 class AppointmentForm(forms.ModelForm):
@@ -23,11 +24,30 @@ class AppointmentForm(forms.ModelForm):
         # Return a string of the format: "Firstname Lastname - Specialty"
         return f"{obj.get_full_name()} - {obj.profile.specialty}"
 
+    def clean(self):
+        # Custom validation to ensure no overlapping appointments
+        cleaned_data = super().clean()
+        doctor = cleaned_data.get('doctor')
+        date = cleaned_data.get('date')
+        time = cleaned_data.get('time')
+
+        if doctor and date and time:
+            appointment_start = timezone.make_aware(datetime.combine(date, time))
+            appointment_end = appointment_start + timedelta(hours=1)
+
+            overlapping_appointments = Appointment.objects.filter(
+                doctor=doctor,
+                date=date,
+                time__range=(appointment_start.time(), appointment_end.time())
+            ).exclude(pk=self.instance.pk if self.instance else None)
+
+            if overlapping_appointments.exists():
+                raise ValidationError("There is already an appointment within this time slot for the selected doctor.")
+
     class Meta:
         model = Appointment
-        fields = ['doctor', 'date', 'time', 'description', 'phone']
+        fields = ['doctor', 'date', 'time', 'description']
         widgets = {
             'date': forms.DateInput(attrs={'type': 'date'}),
             'time': forms.TimeInput(attrs={'type': 'time'}),
         }
-

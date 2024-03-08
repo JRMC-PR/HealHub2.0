@@ -39,9 +39,11 @@
                         {% if user.is_authenticated %}
                         <span class="link1">Welcome, {{ user.username }}</span>
                         <a class="link1" href="{% url 'profile' %}">Profile</a>
+                        <a class="link1" href="{% url 'appointments' %}">Appointments</a>
                         <a class="link1" href="{% url 'logout' %}">Logout</a>
                         {% else %}
                         <a class="link1" href="{% url 'login' %}">Login</a>
+                        <a class="link1" href="{% url 'signup' %}">Signup</a>
                         {% endif %}
 
                         {% comment %} <a class="link1" href="{% url 'about' %}">About</a> {% endcomment %}
