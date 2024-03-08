@@ -1,40 +1,28 @@
 {% extends "accounts/base.html" %}
 
 {% block content%}
-<head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<h1 class="text-center mb-4">Sign Up</h1>
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <p class="text-center">And start a better healthy life</p>
-                    <form method="post" action="/signup/">
-                        {% csrf_token %}
-                        {% for field in form %}
-                            <div class="form-group">
-                                <label>{{ field.label }}</label>
-                                {{ field|add_class:"form-control" }}
-                                {% if field.help_text %}
-                                    <small class="form-text text-muted">{{ field.help_text }}</small>
-                                {% endif %}
-                                {% if field.errors %}
-                                    <div class="alert alert-danger form-error">
-                                        {% for error in field.errors %}
-                                            {{ error }}
-                                        {% endfor %}
-                                    </div>
-                                {% endif %}
-                            </div>
-                        {% endfor %}
-                        <button type="submit" class="btn btn-teal btn-block">Signup</button>
-                    </form>
-                    <p class="mt-2">Already have an account? <a href="{% url 'login' %}" class="text-teal">Click Here</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<h1> Sign Up </h1>
+<p> And start a better healthy life </p>
+<form method="post" action="/signup/">
+  {% csrf_token %}
+  {% for field in form %}
+      <div class="form-group">
+          {{ field.label_tag }}
+          {{ field }}
+          {% if field.help_text %}
+              <small class="form-text text-muted">{{ field.help_text }}</small>
+          {% endif %}
+          {% if field.errors %}
+              <div class="alert alert-danger form-error" style="font-size: 0.8em;">
+                  {% for error in field.errors %}
+                      {{ error }}
+                  {% endfor %}
+              </div>
+          {% endif %}
+      </div>
+  {% endfor %}
+  <button type="submit" style="text-decoration: none; color: white; background-color: #008080; padding: 10px 20px; margin: 5px; border-radius: 5px;">Signup</button>
+  <p>Already have and account? <a href="{% url 'login' %}" style="color: #008080;">Click Here</a></p>
+</form>
+
+{% endblock %}
