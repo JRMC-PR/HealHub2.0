@@ -1,0 +1,54 @@
+<!-- templates/emails/welcome_email.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #f8f8f8;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+        .header {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 10px;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+        }
+        .content {
+            padding: 20px;
+            text-align: center;
+        }
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.8em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            Welcome to HealHub!
+        </div>
+        <div class="content">
+            <p>Hello {{ user.first_name }},</p>
+            <p>We're excited to welcome you to HealHub! Your journey to better health starts here.</p>
+            <p>Explore, discover, and connect with healthcare professionals to meet your needs.</p>
+        </div>
+        <div class="footer">
+            Thank you for joining us,<br>The HealHub Team
+        </div>
+    </div>
+</body>
+</html>

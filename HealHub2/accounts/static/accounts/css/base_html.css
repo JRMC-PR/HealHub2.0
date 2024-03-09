@@ -271,3 +271,10 @@ a {
   background-color: #007bff;
   border-color: #007bff;
 }
+
+/*Appintments*/
+.card .card-body .description-scroll .card-text:last-child{
+  max-height: 200px; /* Adjust based on your preference */
+  overflow-y: auto; /* Adds a scrollbar if the content overflows */
+}
+

@@ -6,8 +6,7 @@ from django.shortcuts import render, redirect
 from django.db import models
 from django.core.mail import send_mail
 from django.conf import settings
-from django.utils import timezone
-from datetime import timedelta
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 @login_required
 def create_appointment(request):
@@ -69,3 +68,4 @@ def user_appointments(request):
     }
 
     return render(request, 'appointments/appointments.html', context)
+
