@@ -211,6 +211,14 @@ a {
   color: white;
 }
 
+.link2 {
+  width: 100%;
+  margin: 0;
+  padding: 10px 0;
+  font: 700 20px 'Oswald', sans-serif;
+  color: white;
+}
+
 .link1:hover {
   background-color: teal;
   color: rgb(61, 61, 61);

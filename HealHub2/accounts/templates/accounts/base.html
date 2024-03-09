@@ -33,7 +33,9 @@
                         {% if user.is_authenticated %}
                         <a class="link1" href="{% url 'profile' %}">Profile</a>
                         <a class="link1" href="{% url 'appointments' %}">Appointments</a>
-                        <a class="link1" href="{% url 'logout' %}">Logout</a>
+                        <form method="post" action="{% url 'logout' %}">
+                            {% csrf_token %}
+                            <button type="submit" class="link1">Logout</button>
                         {% else %}
                         <a class="link1" href="{% url 'login' %}">Login</a>
                         <a class="link1" href="{% url 'signup' %}">Signup</a>
@@ -44,7 +46,8 @@
 
             <!-- Name in the middle -->
             <div class="navbar-header text-center flex-grow-1">
-                <a class="navbar-brand mx-auto" href="{% url 'home' %}">HealHub2.0</a>
+                <a class="navbar-brand mx-auto" href="{% url 'home' %}"> {% block title%}{% endblock%}
+                </a>
             </div>
 
             <!-- Logo on the right -->
