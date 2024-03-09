@@ -1,14 +1,27 @@
-body {
+html, body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   color: #333;
+  height: 100%;
+  /* background-image: linear-gradient(to bottom, #0d9488, #234e52); */
 }
 
-header {
-  background-color: #4CAF50;
-  color: #fff;
+.base{
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+footer{
+  background-color: #234e52;
+  color: white;
   padding: 20px 0;
+  text-align: center;
+  margin-top:auto;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 
 nav {
@@ -17,72 +30,202 @@ nav {
   align-items: center;
   padding: 0 50px;
   width: 100%;
-  background-color: #4CAF50;
+}
+.navbar-header{
+  position: absolute;
+  left: 49%;
+  transform: translateX(-50%);
+
 }
 
-.nav-links li {
-  display: inline;
-  margin-left: 20px;
+.navbar-brand{
+  width:40px;
+  height:40px;
+  color: white !important;
 }
 
-.nav-links a {
+a {
   color: #fff;
   text-decoration: none;
 }
 
-.hero {
+/* .nav-links li {
+  display: inline;
+  margin-left: 20px;
+} */
+
+/* .nav-links a {
+  color: #fff;
+  text-decoration: none;
+} */
+
+/* .hero {
   background: #f2f2f2;
   padding: 50px 0;
   text-align: center;
-}
+} */
 
-.services {
+/* .services {
   padding: 50px 0;
-}
+} */
 
-.service-cards {
+/* .service-cards {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-}
+} */
 
-.card {
+/* .card {
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
   margin: 20px;
   padding: 20px;
   width: 30%;
   text-align: center;
-}
+} */
 
-.booking-form {
+/* .booking-form {
   background: #fff;
   padding: 50px 0;
   text-align: center;
-}
-
+} */
+/*
 .booking-form form {
   display: inline-block;
   margin-top: 20px;
-}
+} */
 
-input, select, textarea {
+/* input, select, textarea {
   margin: 10px 0;
   padding: 10px;
   width: 300px;
   display: block;
-}
+} */
 
-button {
+/* button {
   background-color: #4CAF50;
   color: white;
   padding: 10px 20px;
   border: none;
   cursor: pointer;
-}
+} */
 
-footer {
+/* footer {
   background-color: #333;
   color: #fff;
   text-align: center;
   padding: 20px 0;
+} */
+
+
+/*Hamburger css Section*/
+
+.p-menu1{
+  height: 100%;
+  position: relative;
+
 }
+
+
+/* Hamburger */
+.hamburger1 {
+  height: 45px;
+  margin: 10px;
+  display: -ms-grid;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  justify-items: center;
+  z-index: 120;
+  align-items: right;
+  left: 0;
+}
+
+.hamburger1 div {
+  background-color: rgb(61, 61, 61);
+  position: relative;
+  width: 40px;
+  height: 5px;
+  margin-top: 7px;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  align-items: right;
+}
+
+#toggle1 {
+  display: none;
+}
+
+#toggle1:checked + .hamburger1 .top {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  margin-top: 22.5px;
+}
+
+#toggle1:checked + .hamburger1 .meat {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  margin-top: -5px;
+}
+
+#toggle1:checked + .hamburger1 .bottom {
+  -webkit-transform: scale(0);
+          transform: scale(0);
+}
+
+#toggle1:checked ~ .menu1 {
+  height: 340px;
+}
+
+
+/* Menu */
+.menu1 {
+  width: 100%;
+  margin: 0;
+  display: -ms-grid;
+  display: grid;
+  grid-template-rows: 1fr repeat(4, 0.5fr);
+  grid-row-gap: 25px;
+  padding: 0;
+  list-style: none;
+  clear: both;
+  width: auto;
+  text-align: center;
+  height: 0px;
+  overflow: hidden;
+  transition: height .4s ease;
+  z-index: 120;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.menu1 a:first-child {
+  margin-top: 40px;
+}
+
+.menu1 a:last-child {
+  margin-bottom: 40px;
+}
+
+.link1 {
+  width: 100%;
+  margin: 0;
+  padding: 10px 0;
+  font: 700 20px 'Oswald', sans-serif;
+  color: white;
+}
+
+.link1:hover {
+  background-color: teal;
+  color: rgb(61, 61, 61);
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.p-menu1 .top, .p-menu1 .bottom{
+  background-color: white;
+}
+
+.p-menu1 .meat{
+  background-color: teal;
+}
+
+/*End Hamburger Section */

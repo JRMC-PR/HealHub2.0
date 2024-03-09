@@ -3,40 +3,78 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'accounts/css/home_html.css' %}" />
-<link rel="stylesheet" href="{% static 'accounts/css/hamburger.css' %}" />
 {% endblock extra_css %}
 
+
+{% block title %}Heal Hub - Your Virtual Doctor's Appointment Platform{% endblock %}
+
 {% block content %}
-<main class="container mx-auto px-4">
-  <header class="py-8">
-    <div class="container mx-auto flex justify-center items-center flex-col">
-      <h1 class="font-bold text-3xl md:text-5xl text-gray-800 mb-2">
-        What is HealHub?
-      </h1>
-      <p class="text-black text-center mb-8">
-        We are a hub for your healing needs. We help you get closer to whatever
-        it is that you need in regards to your health.
-      </p>
+<!-- Hero Section -->
+<div class="p-5 mb-4 bg-light rounded-3">
+  <div class="container-fluid py-5">
+    <h1 class="display-5 fw-bold">Welcome to Heal Hub {%if user.profile.doctor%}Dr.{%endif%}{{ user.first_name }}</h1>
+    <p class="col-md-8 fs-4">Your one-stop platform for managing doctor's appointments easily and efficiently.</p>
+    <button class="btn btn-primary btn-lg" type="button">Learn More</button>
+  </div>
+</div>
+
+<!-- Services Section -->
+<div class="container">
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col">
+      <div class="card h-100">
+        <img src="path/to/your/service1-image.jpg" class="card-img-top" alt="Service 1">
+        <div class="card-body">
+          <h5 class="card-title">Service 1</h5>
+          <p class="card-text">Description of Service 1.</p>
+        </div>
+      </div>
     </div>
-  </header>
-  <section class="mb-12">
-    <h2 class="text-3xl font-bold text-gray-800 text-center">What We Do</h2>
-    <p class="text-black mt-4 text-center">
-      We provide an easier way for you to book appointments with your doctors.
-    </p>
-  </section>
-  <section class="text-center">
+    <div class="col">
+      <div class="card h-100">
+        <img src="path/to/your/service2-image.jpg" class="card-img-top" alt="Service 2">
+        <div class="card-body">
+          <h5 class="card-title">Service 2</h5>
+          <p class="card-text">Description of Service 2.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100">
+        <img src="path/to/your/service3-image.jpg" class="card-img-top" alt="Service 3">
+        <div class="card-body">
+          <h5 class="card-title">Service 3</h5>
+          <p class="card-text">Description of Service 3.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-    {% if user.is_authenticated%}
-    {% else %}
-    <h2 class="font-bold text-3xl text-gray-800 mb-4">
-      Are you ready to take a leap for your health?
-    </h2>
-    <p class="text-black mb-8">Sign Up Now or Login</p>
-    <a href="{% url 'login' %}" class="custom-btn" style="background-color: teal; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Login</a>
-    <a href="{% url 'signup' %}" class="custom-btn" style="background-color: teal; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Signup</a>
-    {% endif %}
+<!-- About Section -->
+<div class="container my-5">
+  <h2 class="pb-2 border-bottom">About Us</h2>
+  <p>Heal Hub is dedicated to simplifying healthcare appointments for everyone. Our platform allows users to easily find doctors, book appointments, and manage their healthcare needs from the comfort of their home.</p>
+</div>
 
-  </section>
-</main>
+<!-- Contact Form -->
+<div class="container my-5">
+  <h2 class="pb-2 border-bottom">Contact Us</h2>
+  <form>
+    <div class="mb-3">
+      <label for="contactName" class="form-label">Name</label>
+      <input type="text" class="form-control" id="contactName" placeholder="Your Name">
+    </div>
+    <div class="mb-3">
+      <label for="contactEmail" class="form-label">Email</label>
+      <input type="email" class="form-control" id="contactEmail" placeholder="name@example.com">
+    </div>
+    <div class="mb-3">
+      <label for="contactMessage" class="form-label">Message</label>
+      <textarea class="form-control" id="contactMessage" rows="3"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Send Message</button>
+  </form>
+</div>
 {% endblock %}
+
