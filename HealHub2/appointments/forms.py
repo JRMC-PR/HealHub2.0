@@ -4,49 +4,68 @@ from django.core.exceptions import ValidationError
 from django.utils import timezone
 from datetime import datetime, timedelta
 from .models import Appointment
+from accounts.models import Profile
 
 class AppointmentForm(forms.ModelForm):
+    # These fields are declared to ensure they can be conditionally included
+    # based on the role of the user creating the form.
+    patient = forms.ModelChoiceField(
+        queryset=User.objects.none(),  # This will be overridden in __init__
+        label="Patient",
+        required=False,  # Requirement is conditionally applied in __init__
+    )
+
     doctor = forms.ModelChoiceField(
-        queryset=User.objects.none(),  # Initially empty, set in __init__
+        queryset=User.objects.none(),  # This will be overridden in __init__
         label="Doctor",
-        required=True,
+        required=False,  # Requirement is conditionally applied in __init__
     )
 
     def __init__(self, *args, **kwargs):
-        super(AppointmentForm, self).__init__(*args, **kwargs)
-        # Filter users marked as doctors and set queryset for the doctor field
-        self.fields['doctor'].queryset = User.objects.filter(profile__doctor=True)
+        user = kwargs.pop('user', None)  # Extract the user before calling super
+        super().__init__(*args, **kwargs)
 
-        # Optionally, customize the label from within the __init__ if needed
-        self.fields['doctor'].label_from_instance = self.label_from_instance
+        # Adjust the form fields based on whether the user is a doctor.
+        if user is not None and hasattr(user, 'profile'):
+            if user.profile.doctor is True:
+                self.fields['patient'].queryset = User.objects.filter(profile__doctor=False)
+                self.fields['patient'].required = True
+                self.fields['doctor'].initial = user
+                self.fields['doctor'].widget = forms.HiddenInput()
+                self.fields['doctor'].queryset = User.objects.filter(id=user.id)  # Only the user as doctor
+            elif user.profile.doctor is False:
+                self.fields['doctor'].queryset = User.objects.filter(profile__doctor=True)
+                self.fields['doctor'].required = True
+                self.fields['patient'].initial = user
+                self.fields['patient'].widget = forms.HiddenInput()
+                self.fields['patient'].queryset = User.objects.filter(id=user.id)  # Only the user as patient
 
-    def label_from_instance(self, obj):
-        # Return a string of the format: "Firstname Lastname - Specialty"
-        return f"{obj.get_full_name()} - {obj.profile.specialty}"
+            # Custom label to include specialty for doctors
+            self.fields['doctor'].label_from_instance = lambda obj: f"{obj.get_full_name()} - {obj.profile.specialty}" if obj.profile.doctor else obj.get_full_name()
 
     def clean(self):
-        # Custom validation to ensure no overlapping appointments
         cleaned_data = super().clean()
         doctor = cleaned_data.get('doctor')
         date = cleaned_data.get('date')
         time = cleaned_data.get('time')
 
+        # Ensure the appointment does not overlap with existing appointments
         if doctor and date and time:
             appointment_start = timezone.make_aware(datetime.combine(date, time))
             appointment_end = appointment_start + timedelta(hours=1)
-
             overlapping_appointments = Appointment.objects.filter(
                 doctor=doctor,
                 date=date,
-                time__range=(appointment_start.time(), appointment_end.time())
+                time__gte=appointment_start.time(),
+                time__lt=appointment_end.time()
             ).exclude(pk=self.instance.pk if self.instance else None)
 
             if overlapping_appointments.exists():
-                raise ValidationError("There is already an appointment within this time slot for the selected doctor.")
+                self.add_error('time', "There is already an appointment within this time slot for the selected doctor.")
 
     class Meta:
         model = Appointment
-        fields = ['doctor', 'date', 'time', 'description']
+        fields = ['doctor', 'patient', 'date', 'time', 'description']
         widgets = {
             'date': forms.DateInput(attrs={'type': 'date'}),
             'time': forms.TimeInput(attrs={'type': 'time'}),
