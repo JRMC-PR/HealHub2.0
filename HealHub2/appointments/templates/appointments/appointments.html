@@ -1,24 +1,31 @@
 {% extends "accounts/base.html" %}
 
 {% block content %}
-<h2>Your Appointments</h2>
+<div class="container mt-4">
+    <h2 class="mb-4">Your Appointments</h2>
 
-{% if appointments %}
-<ul>
-    {% for appointment in appointments %}
-    <li>
-        <strong>Date:</strong> {{ appointment.date }}<br>
-        <strong>Time:</strong> {{ appointment.time }}<br>
-        <strong>Doctor:</strong> {{ appointment.doctor.username }} - {{ appointment.doctor.profile.specialty }}<br>
-        <strong>Description:</strong> {{ appointment.description }}
-    </li>
-    {% endfor %}
-</ul>
-{% else %}
-<p>No appointments found.</p>
-{% endif %}
+    {% if appointments %}
+        <div class="row">
+            {% for appointment in appointments %}
+                <div class="col-md-6 col-lg-4 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Appointment with Dr. {{ appointment.doctor.username }}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{ appointment.doctor.profile.specialty }}</h6>
+                            <p class="card-text"><strong>Date:</strong> {{ appointment.date }}</p>
+                            <p class="card-text"><strong>Time:</strong> {{ appointment.time }}</p>
+                            <p class="card-text">{{ appointment.description }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No appointments found.</p>
+    {% endif %}
 
-{% if not is_doctor %}
-    <a href="{% url 'create_appointment' %}" class="btn" style="background-color: teal; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Add New Appointment</a>
-{% endif %}
+    <div class="mt-4">
+        <a href="{% url 'create_appointment' %}" class="btn btn-primary" style="background-color: teal;">Add New Appointment</a>
+    </div>
+</div>
 {% endblock %}

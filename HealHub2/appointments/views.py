@@ -12,7 +12,7 @@ from datetime import timedelta
 @login_required  # Ensures that only logged-in users can access this view
 def create_appointment(request):
     if request.method == 'POST':
-        form = AppointmentForm(request.POST)
+        form = AppointmentForm(request.POST or None, user=request.user)
         if form.is_valid():
             appointment = form.save(commit=False)
             appointment.patient = request.user  # Set the logged-in user as the patient
