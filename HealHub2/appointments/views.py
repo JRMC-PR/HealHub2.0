@@ -9,7 +9,7 @@ from django.conf import settings
 from django.utils import timezone
 from datetime import timedelta
 
-@login_required
+@login_required(login_url='login')
 def create_appointment(request):
     # Pass 'user' to AppointmentForm to adjust fields based on the user's role
     form = AppointmentForm(request.POST or None, user=request.user)
@@ -54,7 +54,7 @@ def create_appointment(request):
     return render(request, 'appointments/create_appointment.html', {'form': form})
 
 
-@login_required
+@login_required(login_url='login')
 def user_appointments(request):
     # Get the current user's profile to check if they are a doctor
     user_profile = Profile.objects.get(user=request.user)

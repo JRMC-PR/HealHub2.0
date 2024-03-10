@@ -57,7 +57,7 @@ def signup(request):
 
 
 
-@login_required
+@login_required(login_url='login')
 def profile(request):
     # Get the current user's profile to check if they are a doctor
     user_profile, created = Profile.objects.get_or_create(user=request.user)
