@@ -1,78 +1,53 @@
 {% extends "accounts/base.html"%}
-
+{% load static %}
 
 {% block title %}Profile{% endblock %}
 {% block content %}
 <div class="profile-page">
     {% if user.is_authenticated %}
     <div class="mt-10 sm:mt-0">
-        <div class="md:grid md:grid-cols-3 md:gap-6">
-            <div class="md:col-span-1">
-                <div class="px-4 sm:px-0">
-                    <h3 class="text-lg font-medium leading-6 text-gray-900">Profile Information</h3>
-                    <p class="mt-1 text-sm text-gray-600">
-                        Personal details and application.
-                    </p>
-                </div>
-            </div>
-            <div class="mt-5 md:mt-0 md:col-span-2">
-                <div class="shadow overflow-hidden sm:rounded-md">
-                    <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
-                        <div class="grid grid-cols-3 gap-6">
-                            <div class="col-span-3 sm:col-span-2">
-                                <label for="username" class="block text-sm font-medium text-gray-700">
-                                    {{ user.username }}
-                                </label>
-                                <div class="mt-1 flex rounded-md shadow-sm">
-                                    <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
-                                        Name: {{ user.first_name }} {{user.last_name}}
-                                    </span>
-                                    <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
-                                        Email: {{ user.email }}
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Additional details here -->
-                    </div>
-                </div>
+        <div class="user-info-card">
+            <img src="{% static 'accounts/images/profile.webp' %}" alt="User Image">
+            <div class="user-details">
+                <strong>{{ user.first_name }} {{ user.last_name }}</strong><br>
+                {{ user.email }}
+                <br>
+                {{ user.profile.phone }}
             </div>
         </div>
-        <!--block for having the title and the box next to each other-->
-        <div class="md:grid md:grid-cols-3 md:gap-6">
-            <div class="md:col-span-1">
-                <div class="px-4 sm:px-0">
-                    <h3 class="text-lg font-medium leading-6 text-gray-900">Appointments</h3>
-                    <p class="mt-1 text-sm text-gray-600">
-                        Upcoming appointments
-                    </p>
-                </div>
-            </div>
+        {% comment %}  end profile card  {% endcomment %}
+                        <!-- Additional details here -->
             <div class="mt-5 md:mt-0 md:col-span-2">
                 <div class="shadow overflow-hidden sm:rounded-md">
                     <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
                         <div class="grid grid-cols-3 gap-6">
                             <div class="col-span-3 sm:col-span-2">
                                 <label for="username" class="block text-sm font-medium text-gray-700">
-                                    Upcoming appointments in the next two weeks                                </label>
+                                    <h1 class="display-5">Upcomming Appointments Chart</h1>
+                                    <h1>  (in the next two weeks)</h1>
+                                </label>
                                 <!--this div is for the appointments-->
                                 <div class="mt-1 flex flex-col rounded-md shadow-sm">
                                     <span class="flex items-center px-3 mb-1 rounded-l-md border border-gray-300 bg-gray-50 text-gray-500 text-sm">
                                         <div class="mt-1 flex flex-col rounded-md shadow-sm">
-                                            {% for appointment in upcoming_appointments %}
-                                            <span class="flex items-center px-3 mb-1 rounded-l-md border border-gray-300 bg-gray-50 text-gray-500 text-sm">
-                                            Appointment with Dr. {{ appointment.doctor.profile.get_full_name }} at {{ appointment.date|date:"F d, Y" }} {{ appointment.time|date:"g:i A" }}
-                                            </span>
-                                            {% empty %}
-                                            <span class="flex items-center px-3 rounded-l-md border border-gray-300 bg-gray-50 text-gray-500 text-sm">
-                                            No upcoming appointments.
-                                            </span>
-                                            {% endfor %}
+                                            {% if appointments%}
+                                                {% for appointment in appointments%}
+                                                <span class="flex items-center px-3 mb-1 rounded-l-md border border-gray-300 bg-gray-50 text-gray-500 text-sm">
+                                                Appointment with Dr. {{ appointment.doctor.get_full_name }} at {{ appointment.date|date:"F d, Y" }} {{ appointment.time|date:"g:i A" }}
+                                                </span>
+                                                {% empty %}
+                                                {% endfor %}
+
+                                                {% else %}
+                                                <span class="flex items-center px-3 rounded-l-md border border-gray-300 bg-gray-50 text-gray-500 text-sm">
+                                                    No upcoming appointments.
+                                                </span>
+                                            {% endif %}
                                         </div>
                                     </span>
-                                    <span class="flex items-center px-3 rounded-l-md border border-t-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
-                                        appointment with (doctor) at (date) (time 3:30)
-                                    </span>
+                                    <a href="{% url 'create_appointment' %}" class="primary-button">
+                                        Book an appointment
+                                    </a>
                                 </div>
                                 <!--apointment list div ends-->
                             </div>

@@ -7,6 +7,10 @@
 <div class="container mt-4">
     <h1 class="display-5 fw-bold">Your Appointments live here {%if user.profile.doctor is True%}Dr.{{ user.first_name }}{% else %}{{ user.first_name }}{%endif%} &darr;</h1></h1>
 
+    <div class="mt-4">
+        <a href="{% url 'create_appointment' %}" class="btn btn-primary" style="background-color: teal;">Add New Appointment</a>
+    </div>
+
     {% if appointments %}
         <div class="row">
             {% for appointment in appointments %}
@@ -28,9 +32,5 @@
     {% else %}
         <p>No appointments found.</p>
     {% endif %}
-
-    <div class="mt-4">
-        <a href="{% url 'create_appointment' %}" class="btn btn-primary" style="background-color: teal;">Add New Appointment</a>
-    </div>
 </div>
 {% endblock %}
