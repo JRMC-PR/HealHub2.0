@@ -286,3 +286,108 @@ a {
   overflow-y: auto; /* Adds a scrollbar if the content overflows */
 }
 
+
+/*Profie*/
+.profile-page .user-info-card {
+  display: flex;
+  align-items: center;
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  margin-bottom: 20px;
+}
+
+.user-info-card img {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  margin-right: 20px;
+}
+
+.user-info-card .user-details {
+  font-size: 1rem;
+}
+
+.user-info-card .user-details strong {
+  color: teal;
+  font-size: 1.2rem;
+}
+
+/* Existing styles continue here... */
+
+/* Updated Primary Button Style */
+.primary-button {
+  display: inline-block; /* Ensures text alignment is centered */
+  text-decoration: none; /* Removes underline from text */
+  color: white; /* Text color */
+  background-color: #008080; /* Teal background */
+  padding: 10px 20px; /* Padding adjusted for better visual balance */
+  margin: 5px 0; /* Adjusted margin for better spacing */
+  border-radius: 5px; /* Rounded corners */
+  border: none; /* Removes the border */
+  cursor: pointer; /* Cursor pointer on hover */
+  font-size: 16px; /* Adjusted font size for better readability */
+  font-weight: 400; /* Normal font weight */
+  transition: background-color 0.3s ease; /* Smooth background color transition on hover */
+}
+
+.primary-button:hover {
+  background-color: #009999; /* Slightly lighter teal for hover effect */
+}
+
+/* Ensure alignment and responsive behavior */
+.profile-page .mt-1.flex.flex-col.rounded-md.shadow-sm {
+  align-items: start; /* Aligns items to the start, adjusting for the button */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .primary-button {
+    width: auto; /* Allows the button to adjust its width based on the content */
+    padding: 8px 15px; /* Slightly smaller padding on smaller screens */
+  }
+}
+
+
+
+/*Signup*/
+.signup-form-container .btn-teal {
+  text-decoration: none;
+  color: white;
+  background-color: #008080; /* Teal background */
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 5px;
+  border: none; /* Assuming you want to remove the default border */
+  cursor: pointer;
+}
+
+.signup-form-container .text-teal {
+  color: #008080;
+}
+
+.shadow {
+  box-shadow: 0 4px 20px 4px rgba(0, 128, 128, 0.6); /* Added spread radius and RGBA color for opacity */
+}
+
+
+
+/*Login*/
+.text-teal{
+  color: teal;
+}
+
+.btn-teal {
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  background-color: #008080 !important; /* Teal background */
+  border-color: #007070 !important; /* Slightly darker teal border for contrast */
+  color: white !important; /* White text */
+}
+
+/*Signup*/
+

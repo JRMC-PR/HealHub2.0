@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts.apps.AccountsConfig',
     'appointments.apps.AppointmentsConfig',
+    'crispy_forms',
+    'crispy_bootstrap5',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -144,3 +147,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'healhub2.0@gmail.com'
 EMAIL_HOST_PASSWORD = 'kalt ozhs cfxc ewmx'
+
+# Crispy forms
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
