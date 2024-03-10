@@ -1,5 +1,7 @@
 {% extends "accounts/base.html"%}
 
+
+{% block title %}Profile{% endblock %}
 {% block content %}
 <div class="profile-page">
     {% if user.is_authenticated %}
@@ -57,15 +59,18 @@
                                 <div class="mt-1 flex flex-col rounded-md shadow-sm">
                                     <span class="flex items-center px-3 mb-1 rounded-l-md border border-gray-300 bg-gray-50 text-gray-500 text-sm">
                                         <div class="mt-1 flex flex-col rounded-md shadow-sm">
-                                            {% for appointment in upcoming_appointments %}
+                                            {% if appointments%}
+                                            {% for appointment in appointments%}
                                             <span class="flex items-center px-3 mb-1 rounded-l-md border border-gray-300 bg-gray-50 text-gray-500 text-sm">
                                             Appointment with Dr. {{ appointment.doctor.profile.get_full_name }} at {{ appointment.date|date:"F d, Y" }} {{ appointment.time|date:"g:i A" }}
                                             </span>
                                             {% empty %}
-                                            <span class="flex items-center px-3 rounded-l-md border border-gray-300 bg-gray-50 text-gray-500 text-sm">
-                                            No upcoming appointments.
-                                            </span>
                                             {% endfor %}
+                                            {% else %}
+                                            <span class="flex items-center px-3 rounded-l-md border border-gray-300 bg-gray-50 text-gray-500 text-sm">
+                                                No upcoming appointments.
+                                                </span>
+                                            {% endif %}
                                         </div>
                                     </span>
                                     <span class="flex items-center px-3 rounded-l-md border border-t-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
