@@ -15,6 +15,11 @@
                             <p class="card-text"><strong>Date:</strong> {{ appointment.date }}</p>
                             <p class="card-text"><strong>Time:</strong> {{ appointment.time }}</p>
                             <p class="card-text"><strong>Description:</strong>{{ appointment.description }}</p>
+                            <form method="POST" action="{% url 'delete_appointments'%}">
+                                {% csrf_token %}
+                                <input type="hidden" name="appointment_id" value="{{ appointment.id }}">
+                                <button type="submit" class="btn btn-teal">Delete</button>
+                            </form>
                         </div>
                     </div>
                 </div>

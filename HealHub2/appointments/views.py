@@ -8,6 +8,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 from django.utils import timezone
 from datetime import timedelta
+from django.views.decorators.http import require_POST
 
 @login_required(login_url='login')
 def create_appointment(request):
@@ -69,3 +70,19 @@ def user_appointments(request):
     }
 
     return render(request, 'appointments/appointments.html', context)
+
+@login_required
+@require_POST  # Ensure this view only handles POST requests
+def delete_appointments(request):
+    appointment_id = request.POST.get('appointment_id')
+    if appointment_id:
+        try:
+            appointment = Appointment.objects.get(id=appointment_id, patient=request.user)
+            appointment.delete()
+        except Appointment.DoesNotExist:
+            pass  # Handle the case where the appointment does not exist if needed
+    return redirect('appointments')
+
+
+
+    return redirect('appointments')
