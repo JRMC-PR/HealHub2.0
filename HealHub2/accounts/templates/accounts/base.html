@@ -33,7 +33,10 @@
                         {% if user.is_authenticated %}
                         <a class="link1" href="{% url 'profile' %}">Profile</a>
                         <a class="link1" href="{% url 'appointments' %}">Appointments</a>
-                        <a class="link1" href="{% url 'logout' %}">Logout</a>
+                        <form method="post" action="{% url 'logout' %}">
+                            {% csrf_token %}
+                            <button type="submit" class="link1">Logout</button>
+                        </form>
                         {% else %}
                         <a class="link1" href="{% url 'login' %}">Login</a>
                         <a class="link1" href="{% url 'signup' %}">Signup</a>
