@@ -1,0 +1,24 @@
+{% extends "accounts/base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Search Results</h2>
+    {% if doctors %}
+        <div class="row">
+            {% for doctor in doctors %}
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ doctor.name }}</h5>
+                            <p class="card-text">{{ doctor.formatted_address }}</p>
+                            <a href="https://www.google.com/maps/search/?api=1&query={{ doctor.geometry.location.lat }},{{ doctor.geometry.location.lng }}" class="btn btn-primary" target="_blank">View on Map</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No doctors found.</p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts.apps.AccountsConfig',
+    'googleapis.apps.GoogleapisConfig',
     'appointments.apps.AppointmentsConfig',
 ]
 
@@ -75,31 +76,14 @@ WSGI_APPLICATION = 'HealHub2.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-#aws connection settings
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'HealHub2db', # Database name
-#         'USER': 'HealHubdev', # Database user
-#         'PASSWORD': 'HolbiTeam2024*', # Database password
-#         'HOST': 'healhubdb.c74ko4cyas4g.us-east-1.rds.amazonaws.com', # Database host
-#         'Port': '5432', # Default postgress database port
-#         # 'OPTIONS': {
-#         #   "service": "my_service",
-#         #   "passfile": ".my_pgpass",
-#         # },
-#     }
-# }
-
-
-# local db connection settings
+# aws connection settings
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'hh3_db', # Database name
-        'USER': 'hh3_dev', # Database user
+        'NAME': 'HealHub2db', # Database name
+        'USER': 'HealHubdev', # Database user
         'PASSWORD': 'HolbiTeam2024*', # Database password
-        'HOST': 'localhost', # Database host
+        'HOST': 'healhubdb.c74ko4cyas4g.us-east-1.rds.amazonaws.com', # Database host
         'Port': '5432', # Default postgress database port
         # 'OPTIONS': {
         #   "service": "my_service",
@@ -107,6 +91,23 @@ DATABASES = {
         # },
     }
 }
+
+
+# local db connection settings
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'hh3_db', # Database name
+#         'USER': 'hh3_dev', # Database user
+#         'PASSWORD': 'HolbiTeam2024*', # Database password
+#         'HOST': 'localhost', # Database host
+#         'Port': '5432', # Default postgress database port
+#         # 'OPTIONS': {
+#         #   "service": "my_service",
+#         #   "passfile": ".my_pgpass",
+#         # },
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -161,3 +162,5 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'healhub2.0@gmail.com'
 EMAIL_HOST_PASSWORD = 'kalt ozhs cfxc ewmx'
+
+GOOGLE_API_KEY = 'AIzaSyDMXMVsM2uYdZ1C2tGIBcj3f405rrTDkdI'

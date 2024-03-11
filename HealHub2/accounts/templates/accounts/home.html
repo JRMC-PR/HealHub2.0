@@ -25,12 +25,14 @@
     <div class="col-md-6">
       <h2 class="text-center mb-3">Find a Doctor Near You</h2>
       <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Search by specialty, e.g., Cardiologist" aria-label="Doctor's specialty" aria-describedby="button-addon2">
-        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+        <input type="text" class="form-control" id="specialty-input" placeholder="Search by specialty, e.g., Cardiologist" aria-label="Doctor's specialty" aria-describedby="button-addon2">
+        <button class="btn btn-outline-secondary" type="button" id="search-button">Search</button>
       </div>
     </div>
   </div>
+  <div id="map" style="height: 400px;"></div>
 </div>
+
 
 <!-- Services Section -->
 <div class="container">
@@ -87,7 +89,7 @@
       <label for="contactMessage" class="form-label">Message</label>
       <textarea class="form-control" id="contactMessage" rows="3"></textarea>
     </div>
-    <button type="submit" class="btn btn-primary">Send Message</button>
+    <button type="submit" class="btn btn-teal">Send Message</button>
   </form>
 </div>
 {% endblock %}

@@ -13,7 +13,7 @@ def send_welcome_email(sender, instance, created, **kwargs):
             'user': instance,
             'login_url': reverse('login')  # Assuming you have a named URL for login
         }
-        html_message = render_to_string('emails/welcome_email.html', context)
+        html_message = render_to_string('accounts/emails/welcome_email.html', context)
         plain_message = strip_tags(html_message)
         subject = 'Welcome to HealHub!'
 
