@@ -75,6 +75,24 @@ WSGI_APPLICATION = 'HealHub2.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+#aws connection settings
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'HealHub2db', # Database name
+#         'USER': 'HealHubdev', # Database user
+#         'PASSWORD': 'HolbiTeam2024*', # Database password
+#         'HOST': 'healhubdb.c74ko4cyas4g.us-east-1.rds.amazonaws.com', # Database host
+#         'Port': '5432', # Default postgress database port
+#         # 'OPTIONS': {
+#         #   "service": "my_service",
+#         #   "passfile": ".my_pgpass",
+#         # },
+#     }
+# }
+
+
+# local db connection settings
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -89,7 +107,6 @@ DATABASES = {
         # },
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
