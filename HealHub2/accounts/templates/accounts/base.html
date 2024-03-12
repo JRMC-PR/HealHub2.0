@@ -71,7 +71,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{% static 'googleapis/js/searchPlaces.js' %}"></script>
     <script src="{% static 'accounts/js/hamburger.js' %}"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMXMVsM2uYdZ1C2tGIBcj3f405rrTDkdI&libraries=places&callback=initMap" type="text/javascript"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ google_api_key }}&libraries=places&callback=initMap" type="text/javascript"></script>
 
 </body>
 </html>

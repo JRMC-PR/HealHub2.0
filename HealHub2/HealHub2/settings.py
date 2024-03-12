@@ -9,21 +9,28 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import os
+from dotenv import load_dotenv
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Load environment variables from .env file
+load_dotenv()
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = os.getenv('SECRET_KEY')
+DEBUG = os.getenv('DEBUG') == 'True'
+GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY')
+
+
+# DEBUG = True
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-@u$i0fxx-ybz)y$vs&_5#-#u9_31_xy)#u7chyb5q9sp8jxdtb'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -65,6 +72,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'HealHub2.context_processors.google_api_key',  # Add the google_api_key context processor
             ],
         },
     },
@@ -80,29 +88,15 @@ WSGI_APPLICATION = 'HealHub2.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'HealHub2db',  # Database name
-        'USER': 'HealHubdev',  # Database user
-        'PASSWORD': 'HolbiTeam2024*',  # Database password
-        'HOST': 'healhubdb.c74ko4cyas4g.us-east-1.rds.amazonaws.com',  # Database host
-        'PORT': '5432',  # Database port
+        'NAME': os.getenv('DATABASE_NAME'),
+        'USER': os.getenv('DATABASE_USER'),
+        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
+        'HOST': os.getenv('DATABASE_HOST'),
+        'PORT': os.getenv('DATABASE_PORT'),
     }
 }
 
-# local db connection settings
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'hh3_db', # Database name
-#         'USER': 'hh3_dev', # Database user
-#         'PASSWORD': 'HolbiTeam2024*', # Database password
-#         'HOST': 'localhost', # Database host
-#         'Port': '5432', # Default postgress database port
-#         # 'OPTIONS': {
-#         #   "service": "my_service",
-#         #   "passfile": ".my_pgpass",
-#         # },
-#     }
-# }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -158,4 +152,4 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'healhub2.0@gmail.com'
 EMAIL_HOST_PASSWORD = 'kalt ozhs cfxc ewmx'
 
-GOOGLE_API_KEY = 'AIzaSyDMXMVsM2uYdZ1C2tGIBcj3f405rrTDkdI'
+

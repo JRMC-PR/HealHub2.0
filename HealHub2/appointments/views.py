@@ -83,6 +83,3 @@ def delete_appointments(request):
             pass  # Handle the case where the appointment does not exist if needed
     return redirect('appointments')
 
-
-
-    return redirect('appointments')

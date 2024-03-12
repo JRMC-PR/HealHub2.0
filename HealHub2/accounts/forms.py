@@ -9,7 +9,22 @@ class RegisterForm(UserCreationForm):
     A form for creating new users. Includes all the required
     fields, plus a repeated password and fields for Profile model.
     Inherits from UserCreationForm which provides password validation.
+
+    Attributes:
+        email (forms.EmailField): Email field.
+        doctor_choices (list): List of doctor choices.
+        phone (forms.CharField): Phone field.
+        doctor (forms.ChoiceField): Doctor field.
+        specialty (forms.CharField): Specialty field.
+
+    Methods:
+        clean_first_name: Capitalizes the first name.
+        clean_last_name: Capitalizes the last name.
+        clean_specialty: Capitalizes the specialty.
+        save: Overridden save method to create a User instance and a Profile instance.
+
     """
+
     email = forms.EmailField(required=True)  # Email field
     doctor_choices = [
         (True, 'Yes'),
@@ -26,6 +41,40 @@ class RegisterForm(UserCreationForm):
         """
         model = User  # The model to use
         fields = ["username", "email", "password1", "password2", "first_name", "last_name"]  # The fields to use
+
+    def clean_first_name(self):
+        """
+        Capitalizes the first name.
+
+        Returns:
+            str: The capitalized first name.
+        """
+        first_name = self.cleaned_data['first_name']
+        # Capitalize first name
+        return first_name.capitalize()
+
+    def clean_last_name(self):
+        """
+        Capitalizes the last name.
+
+        Returns:
+            str: The capitalized last name.
+        """
+        last_name = self.cleaned_data['last_name']
+        # Capitalize last name
+        return last_name.capitalize()
+
+    def clean_specialty(self):
+        """
+        Capitalizes the specialty.
+
+        Returns:
+            str: The capitalized specialty.
+        """
+        # Ensure the specialty field is included in cleaned_data
+        specialty = self.cleaned_data.get('specialty', '')
+        # Capitalize specialty
+        return specialty.capitalize()
 
     def save(self, commit=True):
         """

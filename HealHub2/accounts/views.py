@@ -79,3 +79,5 @@ def profile(request):
 
     return render(request, 'accounts/profile.html', context)
 
+
+

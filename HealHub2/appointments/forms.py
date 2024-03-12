@@ -43,6 +43,20 @@ class AppointmentForm(forms.ModelForm):
             # Custom label to include specialty for doctors
             self.fields['doctor'].label_from_instance = lambda obj: f"{obj.get_full_name()} - {obj.profile.specialty}" if obj.profile.doctor else obj.get_full_name()
 
+    def clean_date(self):
+        date = self.cleaned_data['date']
+        if date < timezone.localdate():
+            raise ValidationError("Appointments cannot be set in the past.")
+        return date
+
+    def clean_time(self):
+        time = self.cleaned_data['time']
+        if time.minute != 0 or time.second != 0:
+            raise ValidationError("Only the hour can be selected for appointments.")
+        return time.replace(minute=0, second=0, microsecond=0)
+
+
+
     def clean(self):
         cleaned_data = super().clean()
         doctor = cleaned_data.get('doctor')

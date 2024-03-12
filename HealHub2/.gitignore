@@ -132,6 +132,10 @@ ENV/
 env.bak/
 venv.bak/
 
+# Postgress connection service file
+.pg_pass
+pg_service.conf
+
 # Spyder project settings
 .spyderproject
 .spyproject
