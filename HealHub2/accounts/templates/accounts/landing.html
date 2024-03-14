@@ -1,0 +1,76 @@
+{% extends "accounts/base.html" %}
+{% load static %}
+
+{% block title %}Landing Page{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'accounts/css/base_html.css' %}" />
+{% endblock extra_css %}
+
+{% block content %}
+<div class="customlandingpage">
+  <div class="landingpage">
+      <div class="landingpage-content">
+          <h1>Welcome to HealHub</h1>
+          <p>HealHub is a platform that connects patients with healthcare providers. We provide a platform for patients to book appointments with healthcare providers and for healthcare providers to manage their appointments.</p>
+          <a href="{% url 'signup' %}" class="btn btn-primary">Get Started</a>
+      </div>
+  </div>
+
+  <div class="container my-4 team-section">
+      <h2 class="text-center mb-4">Meet Our Team</h2>
+      <div class="row">
+          <!-- Card for each team member -->
+          {% comment %} Add your team members here using the card layout shown below {% endcomment %}
+          <div class="col-md-4">
+              <div class="card">
+                  <img src="{% static '/accounts/images/jesusM.jpg' %}" class="card-img-top" alt="Team Member">
+                  <div class="card-body">
+                      <h5 class="card-title">Name</h5>
+                      <p class="card-text">Role - Description.</p>
+                      <!-- Social links -->
+                      <a href="#" class="btn btn-outline-primary"><i class="fab fa-linkedin"></i></a>
+                      <a href="#" class="btn btn-outline-dark"><i class="fab fa-github"></i></a>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+                <img src="{% static '/accounts/images/juanrod.png' %}" class="card-img-top" alt="Team Member">
+                <div class="card-body">
+                    <h5 class="card-title">Name</h5>
+                    <p class="card-text">Role - Description.</p>
+                    <!-- Social links -->
+                    <a href="#" class="btn btn-outline-primary"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="btn btn-outline-dark"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+          <div class="col-md-4">
+            <div class="card">
+                <img src="{% static 'accounts/images/guillermo_pereyo2.png' %}" class="card-img-top" alt="Team Member">
+                <div class="card-body">
+                    <h5 class="card-title">Name</h5>
+                    <p class="card-text">Role - Description.</p>
+                    <!-- Social links -->
+                    <a href="#" class="btn btn-outline-primary"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="btn btn-outline-dark"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+          <div class="col-md-4">
+            <div class="card">
+                <img src="{% static 'path/to/image.jpg' %}" class="card-img-top" alt="Team Member">
+                <div class="card-body">
+                    <h5 class="card-title">Name</h5>
+                    <p class="card-text">Role - Description.</p>
+                    <!-- Social links -->
+                    <a href="#" class="btn btn-outline-primary"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="btn btn-outline-dark"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+      </div>
+  </div>
+</div>
+{% endblock %}

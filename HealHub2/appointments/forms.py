@@ -7,6 +7,11 @@ from .models import Appointment
 from accounts.models import Profile
 
 class AppointmentForm(forms.ModelForm):
+    """
+    A form for creating and editing appointments.
+    The form fields are adjusted based on the role of the user (doctor or patient).
+    """
+
     # These fields are declared to ensure they can be conditionally included
     # based on the role of the user creating the form.
     patient = forms.ModelChoiceField(
@@ -22,6 +27,10 @@ class AppointmentForm(forms.ModelForm):
     )
 
     def __init__(self, *args, **kwargs):
+        """
+        Initialize the form.
+        Adjust the form fields based on whether the user is a doctor or a patient.
+        """
         user = kwargs.pop('user', None)  # Extract the user before calling super
         super().__init__(*args, **kwargs)
 
@@ -44,20 +53,30 @@ class AppointmentForm(forms.ModelForm):
             self.fields['doctor'].label_from_instance = lambda obj: f"{obj.get_full_name()} - {obj.profile.specialty}" if obj.profile.doctor else obj.get_full_name()
 
     def clean_date(self):
+        """
+        Validate the date.
+        Ensure that the appointment date is not in the past.
+        """
         date = self.cleaned_data['date']
         if date < timezone.localdate():
             raise ValidationError("Appointments cannot be set in the past.")
         return date
 
     def clean_time(self):
+        """
+        Validate the time.
+        Ensure that the appointment time is on the hour (i.e., minutes and seconds are 0).
+        """
         time = self.cleaned_data['time']
         if time.minute != 0 or time.second != 0:
             raise ValidationError("Only the hour can be selected for appointments.")
         return time.replace(minute=0, second=0, microsecond=0)
 
-
-
     def clean(self):
+        """
+        Validate the form.
+        Ensure the appointment does not overlap with existing appointments.
+        """
         cleaned_data = super().clean()
         doctor = cleaned_data.get('doctor')
         date = cleaned_data.get('date')
@@ -78,6 +97,10 @@ class AppointmentForm(forms.ModelForm):
                 self.add_error('time', "There is already an appointment within this time slot for the selected doctor.")
 
     class Meta:
+        """
+        Meta class for the AppointmentForm.
+        Specifies the model, fields, and widgets to be used by the form.
+        """
         model = Appointment
         fields = ['doctor', 'patient', 'date', 'time', 'description']
         widgets = {

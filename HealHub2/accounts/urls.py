@@ -3,7 +3,7 @@ from . import views
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
-    path("", views.home, name='home'),
+    path("", views.landing, name='landing'), #TODO: Change url to landing page view [JUAN]
     path("", include('django.contrib.auth.urls')), #
     path("home/", views.home, name='home'), #directs to the homepage view
     path('profile/', views.profile, name='profile'), #directs to the profile view

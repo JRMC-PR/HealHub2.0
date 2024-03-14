@@ -1,9 +1,6 @@
 {% extends "accounts/base.html" %}
-{% load static %}
 
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'accounts/css/home_html.css' %}" />
-{% endblock extra_css %}
+{% load static %}
 
 
 {% block title %}Heal Hub - Your Virtual Doctor's Appointment Platform{% endblock %}
@@ -39,19 +36,27 @@
   <div class="row row-cols-1 row-cols-md-3 g-4">
     <div class="col">
       <div class="card h-100">
-        {% comment %} <img src="path/to/your/service1-image.jpg" class="card-img-top" alt="Service 1"> {% endcomment %}
+        <img src="/static/accounts/images/appointments.webp" class="card-img-top" alt="Service 1">
         <div class="card-body">
-          <h5 class="card-title">Service 1</h5>
-          <p class="card-text">Description of Service 1.</p>
+          <h5 class="card-title text-teal"><strong>Appointment Manager</strong></h5>
+            <p class="card-text">In our application, you have the convenience of scheduling appointments
+              with certified doctors at your fingertips. This feature ensures that you can easily access
+              professional healthcare services when you need them, providing a seamless connection between
+              you and qualified medical practitioners. Our commitment to your health is reflected in our dedication
+              to offering an efficient and user-friendly scheduling system, allowing you to prioritize your well-being
+              with ease and confidence.</p>
         </div>
       </div>
     </div>
     <div class="col">
       <div class="card h-100">
-        {% comment %} <img src="path/to/your/service2-image.jpg" class="card-img-top" alt="Service 2"> {% endcomment %}
+        <img src="/static/accounts/images/search.webp" class="card-img-top" alt="Service 2">
         <div class="card-body">
-          <h5 class="card-title">Service 2</h5>
-          <p class="card-text">Description of Service 2.</p>
+          <h5 class="card-title text-teal"><strong>Nearby Doctor office search</strong></h5>
+            <p class="card-text">Our application enables you to search for nearby doctor's offices, allowing you to filter
+              results based on specialty. This feature is designed to help you find the most suitable medical professionals
+              in your vicinity, tailored to your specific healthcare needs. By offering a streamlined approach to locate specialized
+              medical services, we facilitate a more efficient and targeted way for you to access the care you require.</p>
         </div>
       </div>
     </div>
@@ -59,8 +64,12 @@
       <div class="card h-100">
         {% comment %} <img src="path/to/your/service3-image.jpg" class="card-img-top" alt="Service 3"> {% endcomment %}
         <div class="card-body">
-          <h5 class="card-title">Service 3</h5>
-          <p class="card-text">Description of Service 3.</p>
+          <h5 class="card-title"><strong>AI consultant</strong></h5>
+          <p class="card-text">In this platform, you have the opportunity to interact with OpenAI for guidance on which doctors to consult
+            based on your symptoms and concerns. It's important to remember, however, that OpenAI is not a certified doctor. While we aim
+            to provide helpful recommendations, our advice should not replace professional medical consultation. Always seek the expertise
+            of a licensed healthcare provider for accurate diagnoses and treatment plans
+          </p>
         </div>
       </div>
     </div>
@@ -70,7 +79,8 @@
 <!-- About Section -->
 <div class="container my-5">
   <h2 class="pb-2 border-bottom">About Us</h2>
-  <p>Heal Hub is dedicated to simplifying healthcare appointments for everyone. Our platform allows users to easily find doctors, book appointments, and manage their healthcare needs from the comfort of their home.</p>
+    <p>Heal Hub is dedicated to simplifying healthcare appointments for everyone. Our platform allows users to easily find doctors,
+      book appointments, and manage their healthcare needs from the comfort of their home.</p>
 </div>
 
 <!-- Contact Form -->
@@ -92,5 +102,6 @@
     <button type="submit" class="btn btn-teal">Send Message</button>
   </form>
 </div>
+
 {% endblock %}
 

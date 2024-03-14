@@ -22,4 +22,5 @@ urlpatterns = [
     path("", include('accounts.urls')), #directs to the accounts app
     path("", include('appointments.urls')), #directs to the appointments app
     path("", include('googleapis.urls')), #directs to the googleapis app
+    path("", include('openaiapi.urls')), #directs to the openaiapi app
 ]

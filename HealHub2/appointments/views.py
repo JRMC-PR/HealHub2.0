@@ -12,6 +12,11 @@ from django.views.decorators.http import require_POST
 
 @login_required(login_url='login')
 def create_appointment(request):
+    """
+    This function handles the creation of an appointment.
+    It uses the AppointmentForm to validate the input and save the appointment.
+    It also sends an email notification to both the patient and the doctor.
+    """
     # Pass 'user' to AppointmentForm to adjust fields based on the user's role
     form = AppointmentForm(request.POST or None, user=request.user)
 
@@ -57,6 +62,11 @@ def create_appointment(request):
 
 @login_required(login_url='login')
 def user_appointments(request):
+    """
+    This function handles the user appointments view.
+    It fetches all appointments where the user is either the doctor or the patient.
+    The appointments are then passed to the appointments template.
+    """
     # Get the current user's profile to check if they are a doctor
     user_profile = Profile.objects.get(user=request.user)
     is_doctor = user_profile.doctor
@@ -74,6 +84,11 @@ def user_appointments(request):
 @login_required
 @require_POST  # Ensure this view only handles POST requests
 def delete_appointments(request):
+    """
+    This function handles the deletion of an appointment.
+    It receives a POST request with the appointment id, fetches the appointment,
+    and deletes it if the current user is the patient.
+    """
     appointment_id = request.POST.get('appointment_id')
     if appointment_id:
         try:
@@ -82,4 +97,3 @@ def delete_appointments(request):
         except Appointment.DoesNotExist:
             pass  # Handle the case where the appointment does not exist if needed
     return redirect('appointments')
-

@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'googleapis.apps.GoogleapisConfig',
     'appointments.apps.AppointmentsConfig',
+    'openaiapi.apps.OpenaiapiConfig',
 ]
 
 MIDDLEWARE = [

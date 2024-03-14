@@ -9,7 +9,7 @@ from appointments.models import Appointment
 from django.utils import timezone
 from datetime import timedelta
 
-
+#TODO: add login required when landing is created
 # home view
 def home(request):
     """
@@ -22,6 +22,19 @@ def home(request):
         HttpResponse: The HTTP response. Renders the home page.
     """
     return render(request, "accounts/home.html")
+
+# landing view
+def landing(request):
+    """
+    Renders the landing page.
+
+    Args:
+        request (HttpRequest): The HTTP request instance.
+
+    Returns:
+        HttpResponse: The HTTP response. Renders the landing page.
+    """
+    return render(request, "accounts/landing.html")
 
 
 # signup view
@@ -55,10 +68,14 @@ def signup(request):
     return render(request, "accounts/signup.html", {'form': form})
 
 
-
-
+# login view
 @login_required(login_url='login')
 def profile(request):
+    """
+    This function handles the profile view.
+    It checks if the logged-in user is a doctor and fetches their upcoming appointments
+    for the next two weeks. The appointments are then passed to the profile template.
+    """
     # Get the current user's profile to check if they are a doctor
     user_profile, created = Profile.objects.get_or_create(user=request.user)
     is_doctor = user_profile.doctor
@@ -72,11 +89,13 @@ def profile(request):
         date__lte=two_weeks_ahead
     ).order_by('date', 'time')  # Ordering appointments by date and time
 
+    # Prepare the context for the template
     context = {
         'appointments': appointments,
         'is_doctor': is_doctor,
     }
 
+    # Render the profile template with the context
     return render(request, 'accounts/profile.html', context)
 
 
