@@ -34,7 +34,51 @@ def landing(request):
     Returns:
         HttpResponse: The HTTP response. Renders the landing page.
     """
-    return render(request, "accounts/landing.html")
+    team_members = [
+        {
+            'name': 'Jesus R. Mendez Cruz',
+            'title': 'Lead Developer - Fullstack (Backend Focus)',
+            'description': 'As the lead developer, I balanced my focus between frontend and backend aspects, emphasizing backend development. My duties encompassed designing and executing efficient server-side applications, enhancing performance, and ensuring responsiveness to frontend requests and multiple APIs. Simultaneously, I contributed to frontend development, aiming for a seamless user experience. This dual focus allowed us to build a robust, user-centered platform, effectively bridging the gap between server efficiency and user interface design.',
+            'image': 'static/accounts/images/jesusM.jpg',
+            'social_media': {
+                'instagram': '#',
+                'linkedin': '#',
+                'twitter': '#'
+            }
+        },
+                {
+            'name': 'Juan C. Roodriguez',
+            'title': 'Fullstack (Frontend Focus)',
+            'description': '',
+            'image': 'static/accounts/images/juanrod.png',
+            'social_media': {
+                'instagram': '#',
+                'linkedin': '#',
+                'twitter': '#'
+            }
+        },        {
+            'name': 'Guillermo J. Pereyo Castelvi',
+            'title': 'Fullstack (Frontend Focus)',
+            'description': 'As a frontend developer, I was deeply involved in architecting the website\'s structure and choosing key components to boost user interaction and system efficiency. My work utilized cutting-edge frontend technologies to achieve a seamless interface, complemented by backend integration for uniformity across the platform. I dedicated myself to enhancing user interactivity, ensuring adaptability in design, and upholding superior web aesthetics, all aimed at fulfilling our project\'s ambitious objectives. This comprehensive approach contributed significantly to a user-friendly and high-performing application.',
+            'image': 'static/accounts/images/guillermo_pereyo2.png',
+            'social_media': {
+                'instagram': '#',
+                'linkedin': '#',
+                'twitter': '#'
+            }
+        },        {
+            'name': 'Joshua Santigao',
+            'title': 'Fullstack (Backend Focus)',
+            'description': '',
+            'image': '',
+            'social_media': {
+                'instagram': '#',
+                'linkedin': '#',
+                'twitter': '#'
+            }
+        },
+    ]
+    return render(request, "accounts/landing.html", {'team_members': team_members})
 
 
 # signup view
