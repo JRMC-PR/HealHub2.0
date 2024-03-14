@@ -71,7 +71,8 @@
     <!--Chat box-->
     <div class="chat-container shadow-lg">
         <div class="d-flex justify-content-between align-items-center py-2 px-3 chat-header">
-            <h6 class="m-0">Chat with us!</h6>
+            <!-- Wrap the title in a span or div for better click handling -->
+            <span class="flex-grow-1">Chat with us!</span>
             <button type="button" class="btn-close" id="toggle-chat"></button>
         </div>
         <div class="chat-box d-flex flex-column" id="chat-box">
@@ -81,7 +82,7 @@
                 <button id="send" class="btn btn-outline-primary">Send</button>
             </div>
         </div>
-      </div>
+    </div>
 
       <style>
           .chat-container {
@@ -151,6 +152,7 @@
                       });
                   }
               });
+
           });
       </script>
 

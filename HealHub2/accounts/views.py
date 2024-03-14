@@ -49,7 +49,7 @@ def landing(request):
                 {
             'name': 'Juan C. Roodriguez',
             'title': 'Fullstack (Frontend Focus)',
-            'description': '',
+            'description': 'As a front-end developer, I specialized in designing key pages, such as the landing and base HTML, pivotal for our web interface. Collaboratively, I helped shape our front-end strategy, ensuring our efforts aligned seamlessly with project objectives. My role extended beyond coding, involving strategic planning to enhance user interaction and satisfaction. This collaborative effort led to a user-friendly and aesthetically pleasing interface, significantly enriching the overall online experienceof the patients and doctors.',
             'image': 'static/accounts/images/juanrod.png',
             'social_media': {
                 'instagram': '#',
@@ -69,7 +69,7 @@ def landing(request):
         },        {
             'name': 'Joshua Santigao',
             'title': 'Fullstack (Backend Focus)',
-            'description': '',
+            'description': ' ',
             'image': '',
             'social_media': {
                 'instagram': '#',
