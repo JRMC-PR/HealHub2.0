@@ -11,7 +11,7 @@
   <div class="container-fluid py-5">
     <h1 class="display-5 fw-bold">Welcome to Heal Hub, {%if user.profile.doctor is True%}Dr.{{ user.first_name }}{% else %}{{ user.first_name }}{%endif%}</h1>
     <p class="col-md-8 fs-4">Your one-stop platform for managing doctor's appointments easily and efficiently.</p>
-    <button class="btn btn-primary btn-lg" type="button">Learn More</button>
+    <button class="btn btn-primary btn-lg btn-teal" type="button">Learn More</button>
   </div>
 </div>
 
@@ -62,9 +62,9 @@
     </div>
     <div class="col">
       <div class="card h-100">
-        {% comment %} <img src="path/to/your/service3-image.jpg" class="card-img-top" alt="Service 3"> {% endcomment %}
+        <img src="/static/accounts/images/chatbot.webp" class="card-img-top" alt="Service 3">
         <div class="card-body">
-          <h5 class="card-title"><strong>AI consultant</strong></h5>
+          <h5 class="card-title"><strong class="text-teal">AI consultant</strong></h5>
           <p class="card-text">In this platform, you have the opportunity to interact with OpenAI for guidance on which doctors to consult
             based on your symptoms and concerns. It's important to remember, however, that OpenAI is not a certified doctor. While we aim
             to provide helpful recommendations, our advice should not replace professional medical consultation. Always seek the expertise

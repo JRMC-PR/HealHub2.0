@@ -41,20 +41,18 @@ def landing(request):
             'description': 'As the lead developer, I balanced my focus between frontend and backend aspects, emphasizing backend development. My duties encompassed designing and executing efficient server-side applications, enhancing performance, and ensuring responsiveness to frontend requests and multiple APIs. Simultaneously, I contributed to frontend development, aiming for a seamless user experience. This dual focus allowed us to build a robust, user-centered platform, effectively bridging the gap between server efficiency and user interface design.',
             'image': 'static/accounts/images/jesusM.jpg',
             'social_media': {
-                'instagram': '#',
-                'linkedin': '#',
-                'twitter': '#'
+                'github': '#',
+                'linkedin': '#'
             }
         },
                 {
-            'name': 'Juan C. Roodriguez',
+            'name': 'Juan C. Roodriguez Ocasio',
             'title': 'Fullstack (Frontend Focus)',
             'description': 'As a front-end developer, I specialized in designing key pages, such as the landing and base HTML, pivotal for our web interface. Collaboratively, I helped shape our front-end strategy, ensuring our efforts aligned seamlessly with project objectives. My role extended beyond coding, involving strategic planning to enhance user interaction and satisfaction. This collaborative effort led to a user-friendly and aesthetically pleasing interface, significantly enriching the overall online experienceof the patients and doctors.',
             'image': 'static/accounts/images/juanrod.png',
             'social_media': {
-                'instagram': '#',
-                'linkedin': '#',
-                'twitter': '#'
+                'github': '#',
+                'linkedin': '#'
             }
         },        {
             'name': 'Guillermo J. Pereyo Castelvi',
@@ -62,19 +60,17 @@ def landing(request):
             'description': 'As a frontend developer, I was deeply involved in architecting the website\'s structure and choosing key components to boost user interaction and system efficiency. My work utilized cutting-edge frontend technologies to achieve a seamless interface, complemented by backend integration for uniformity across the platform. I dedicated myself to enhancing user interactivity, ensuring adaptability in design, and upholding superior web aesthetics, all aimed at fulfilling our project\'s ambitious objectives. This comprehensive approach contributed significantly to a user-friendly and high-performing application.',
             'image': 'static/accounts/images/guillermo_pereyo2.png',
             'social_media': {
-                'instagram': '#',
-                'linkedin': '#',
-                'twitter': '#'
+                'github': '#',
+                'linkedin': '#'
             }
         },        {
-            'name': 'Joshua Santigao',
+            'name': 'Joshua Santigao Morales',
             'title': 'Fullstack (Backend Focus)',
             'description': ' ',
             'image': '',
             'social_media': {
-                'instagram': '#',
-                'linkedin': '#',
-                'twitter': '#'
+                'github': '#',
+                'linkedin': '#'
             }
         },
     ]
