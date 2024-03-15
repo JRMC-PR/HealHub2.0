@@ -101,3 +101,4 @@ class RegisterForm(UserCreationForm):
                 }
             )
         return user  # Return User instance
+

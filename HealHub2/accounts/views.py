@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
-from .forms import RegisterForm
+from .forms import RegisterForm, ContactForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.db.models import Q
@@ -8,11 +8,14 @@ from .models import Profile
 from appointments.models import Appointment
 from django.utils import timezone
 from datetime import timedelta
+from django.conf import settings
+from django.core.mail import send_mail
+
 
 # TODO: add login required when landing is created
 # home view
 
-
+@login_required
 def home(request):
     """
     Renders the home page.
@@ -143,3 +146,5 @@ def profile(request):
 
     # Render the profile template with the context
     return render(request, 'accounts/profile.html', context)
+
+
