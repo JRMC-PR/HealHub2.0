@@ -9,8 +9,10 @@ from appointments.models import Appointment
 from django.utils import timezone
 from datetime import timedelta
 
-#TODO: add login required when landing is created
+# TODO: add login required when landing is created
 # home view
+
+
 def home(request):
     """
     Renders the home page.
@@ -24,6 +26,8 @@ def home(request):
     return render(request, "accounts/home.html")
 
 # landing view
+
+
 def landing(request):
     """
     Renders the landing page.
@@ -41,35 +45,37 @@ def landing(request):
             'description': 'As the lead developer, I balanced my focus between frontend and backend aspects, emphasizing backend development. My duties encompassed designing and executing efficient server-side applications, enhancing performance, and ensuring responsiveness to frontend requests and multiple APIs. Simultaneously, I contributed to frontend development, aiming for a seamless user experience. This dual focus allowed us to build a robust, user-centered platform, effectively bridging the gap between server efficiency and user interface design.',
             'image': 'static/accounts/images/jesusM.jpg',
             'social_media': {
-                'github': '#',
-                'linkedin': '#'
+                'github': 'https://github.com/JRMC-PR',
+                'linkedin': 'https://www.linkedin.com/in/jesús-méndez-068b8a27a/'
             }
         },
-                {
-            'name': 'Juan C. Roodriguez Ocasio',
+        {
+            'name': 'Juan C. Rodriguez Ocasio',
             'title': 'Fullstack (Frontend Focus)',
             'description': 'As a front-end developer, I specialized in designing key pages, such as the landing and base HTML, pivotal for our web interface. Collaboratively, I helped shape our front-end strategy, ensuring our efforts aligned seamlessly with project objectives. My role extended beyond coding, involving strategic planning to enhance user interaction and satisfaction. This collaborative effort led to a user-friendly and aesthetically pleasing interface, significantly enriching the overall online experienceof the patients and doctors.',
             'image': 'static/accounts/images/juanrod.png',
             'social_media': {
-                'github': '#',
-                'linkedin': '#'
+                'github': 'https://github.com/JCRoooD',
+                'linkedin': 'https://linkedin.com/in/jcroood/'
             }
-        },        {
-            'name': 'Guillermo J. Pereyo Castelvi',
+        },
+        {
+            'name': 'Guillermo J. Pereyo Castellvi',
             'title': 'Fullstack (Frontend Focus)',
             'description': 'As a frontend developer, I was deeply involved in architecting the website\'s structure and choosing key components to boost user interaction and system efficiency. My work utilized cutting-edge frontend technologies to achieve a seamless interface, complemented by backend integration for uniformity across the platform. I dedicated myself to enhancing user interactivity, ensuring adaptability in design, and upholding superior web aesthetics, all aimed at fulfilling our project\'s ambitious objectives. This comprehensive approach contributed significantly to a user-friendly and high-performing application.',
             'image': 'static/accounts/images/guillermo_pereyo2.png',
             'social_media': {
-                'github': '#',
-                'linkedin': '#'
+                'github': 'https://github.com/GuilleP2018',
+                'linkedin': 'https://www.linkedin.com/in/guillermo-pereyo-castellvi-0b3a3b1b3/'
             }
-        },        {
-            'name': 'Joshua Santigao Morales',
+        },
+        {
+            'name': 'Joshua Santiago Morales',
             'title': 'Fullstack (Backend Focus)',
             'description': ' ',
             'image': '',
             'social_media': {
-                'github': '#',
+                'github': 'https://github.com/JCRoooD',
                 'linkedin': '#'
             }
         },
@@ -100,7 +106,7 @@ def signup(request):
             # Authenticate the user
             login(request, user)
 
-            return redirect('profile') # Redirect to the profile page
+            return redirect('profile')  # Redirect to the profile page
     else:
         # Initialize an empty form
         form = RegisterForm()
@@ -137,6 +143,3 @@ def profile(request):
 
     # Render the profile template with the context
     return render(request, 'accounts/profile.html', context)
-
-
-
