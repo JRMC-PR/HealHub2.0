@@ -12,10 +12,8 @@ from django.conf import settings
 from django.core.mail import send_mail
 
 
-# TODO: add login required when landing is created
-# home view
 
-@login_required
+# home view
 def home(request):
     """
     Renders the home page.

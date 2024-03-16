@@ -1,8 +1,10 @@
 from django.contrib.auth import login, authenticate
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
+from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 from accounts.models import Profile
+
 
 class RegisterForm(UserCreationForm):
     """
@@ -75,6 +77,13 @@ class RegisterForm(UserCreationForm):
         specialty = self.cleaned_data.get('specialty', '')
         # Capitalize specialty
         return specialty.capitalize()
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        # Check if any user already exists with this email
+        if User.objects.filter(email=email).exists():
+            raise ValidationError("A user with that email already exists.")
+        return email
 
     def save(self, commit=True):
         """
