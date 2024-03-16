@@ -13,6 +13,7 @@ from django.core.mail import send_mail
 
 
 
+
 # home view
 def home(request):
     """
