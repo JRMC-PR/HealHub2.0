@@ -94,12 +94,20 @@ function createMarker(place, map) {
   });
 
   google.maps.event.addListener(marker, "click", () => {
-    infowindow.setContent(place.name || "");
+    const placeName = place.name || "Unknown Place";
+    const infoContent = `
+      <div>
+        <h3>${placeName}</h3>
+        <p><a href="https://www.google.com/search?q=${encodeURIComponent(placeName)}" target="_blank">More Info</a></p>
+      </div>
+    `;
+    infowindow.setContent(infoContent);
     infowindow.open(map, marker);
   });
 
   markers.push(marker); // Add the marker to the array of markers
 }
+
 
 let markers = []; // Array to hold all markers
 function clearMarkers() {
