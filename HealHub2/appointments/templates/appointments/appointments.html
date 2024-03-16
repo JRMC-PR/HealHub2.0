@@ -1,8 +1,8 @@
 {% extends "accounts/base.html" %}
-{% block title%}Appointments{% endblock %}
+{% block title %}Appointments{% endblock %}
 {% block content %}
 <div class="container mt-4">
-    <h1 class="display-6 fw-bold">Your Appointments live here {%if user.profile.doctor is True%}Dr.{{ user.first_name }}{% else %}{{ user.first_name }}{%endif%}</h1></h1>
+    <h1 class="display-6 fw-bold">Your Appointments {% if user.profile.doctor %}Dr.{{ user.first_name }}{% else %}{{ user.first_name }}{% endif %}</h1>
 
     {% if appointments %}
         <div class="row">
@@ -10,12 +10,19 @@
                 <div class="col-md-6 col-lg-4 mb-3">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Appointment with Dr. {{ appointment.doctor.username }}</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">{{ appointment.doctor.profile.specialty }}</h6>
+                            {% if user.profile.doctor %}
+                                <!-- If the user is a doctor, show the patient's name -->
+                                <h5 class="card-title">Appointment with {{ appointment.patient.first_name }} {{ appointment.patient.last_name }}</h5>
+                                <p class="card-text"><strong>Patient's Contact:</strong> {{ appointment.patient.profile.contact }}</p> <!-- Assuming there is a contact field -->
+                            {% else %}
+                                <!-- If the user is a patient, show the doctor's name -->
+                                <h5 class="card-title">Appointment with Dr. {{ appointment.doctor.first_name }} {{ appointment.doctor.last_name }}</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">{{ appointment.doctor.profile.specialty }}</h6>
+                            {% endif %}
                             <p class="card-text"><strong>Date:</strong> {{ appointment.date }}</p>
                             <p class="card-text"><strong>Time:</strong> {{ appointment.time }}</p>
-                            <p class="card-text"><strong>Description:</strong>{{ appointment.description }}</p>
-                            <form method="POST" action="{% url 'delete_appointments'%}">
+                            <p class="card-text"><strong>Description:</strong> {{ appointment.description }}</p>
+                            <form method="POST" action="{% url 'delete_appointments' %}">
                                 {% csrf_token %}
                                 <input type="hidden" name="appointment_id" value="{{ appointment.id }}">
                                 <button type="submit" class="btn btn-teal">Complete appointment</button>
