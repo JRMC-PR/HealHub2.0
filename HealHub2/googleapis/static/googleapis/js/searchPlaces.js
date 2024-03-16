@@ -37,7 +37,7 @@ function initMap() {
       },
       {
         maximumAge: 60000, // Accept a cached position within 60 seconds
-        timeout: 5000, // Stop trying after 5 seconds
+        timeout: 10000, // Stop trying after 5 seconds
         enableHighAccuracy: true, // Request the best accuracy possible
       }
     );

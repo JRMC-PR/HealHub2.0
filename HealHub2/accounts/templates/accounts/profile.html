@@ -9,7 +9,10 @@
         <div class="user-info-card">
             <img src="{% static 'accounts/images/profile.webp' %}" alt="User Image">
             <div class="user-details">
-                <strong>{{ user.first_name }} {{ user.last_name }}</strong><br>
+                <strong>{{ user.first_name }} {{ user.last_name }}</strong>
+                <br>
+                {{user.username}}
+                <br>
                 {{ user.email }}
                 <br>
                 {{ user.profile.phone }}
