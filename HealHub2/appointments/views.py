@@ -48,7 +48,7 @@ def create_appointment(request):
         Description: {appointment.description}
 
         Regards,
-        Your Healthcare System
+        Your HealHub2.0 team
         '''
         recipient_list = [appointment.patient.email, appointment.doctor.email]  # Sending email to both doctor and patient
 

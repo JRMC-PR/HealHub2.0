@@ -28,8 +28,6 @@ def home(request):
     return render(request, "accounts/home.html")
 
 # landing view
-
-
 def landing(request):
     """
     Renders the landing page.
@@ -74,7 +72,7 @@ def landing(request):
         {
             'name': 'Joshua Santiago Morales',
             'title': 'Fullstack (Backend Focus)',
-            'description': ' ',
+            'description': 'Databse engenieer and backend developer ',
             'image': '',
             'social_media': {
                 'github': 'https://github.com/JCRoooD',
