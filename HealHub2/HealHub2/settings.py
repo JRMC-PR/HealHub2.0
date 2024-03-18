@@ -32,7 +32,7 @@ GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY')
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['54.204.168.171', 'localhost', '127.0.0.1', 'healhub2024.com', 'www.healhub2024.com']
 
 
 # Application definition
