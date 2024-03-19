@@ -41,8 +41,8 @@ def landing(request):
     team_members = [
         {
             'name': 'Jesus R. Mendez Cruz',
-            'title': 'Lead Developer - Fullstack (Backend)',
-            'description': 'As the lead developer, I balanced my focus between frontend and backend aspects, emphasizing backend development. My duties encompassed designing and executing efficient server-side applications, enhancing performance, and ensuring responsiveness to frontend requests and multiple APIs. Simultaneously, I contributed to frontend development, aiming for a seamless user experience. This dual focus allowed us to build a robust, user-centered platform, effectively bridging the gap between server efficiency and user interface design.',
+            'title': 'Lead Developer - Fullstack',
+            'description': 'As the lead developer, I balanced my focus between frontend and backend portions of the project, emphasizing backend development with database. My duties involved designing and executing efficient server-side applications, enhancing performance, and ensuring responsiveness to frontend requests and multiple APIs. As well, I helped on the frontend development, aiming for a seamless user experience while working in conjunction with the team. This dual focus allowed us to build a user-centered platform, effectively bridging the gap between server efficiency and user interface design.',
             'image': 'static/accounts/images/jesusM.jpg',
             'social_media': {
                 'github': 'https://github.com/JRMC-PR',
@@ -52,7 +52,7 @@ def landing(request):
         {
             'name': 'Juan C. Rodriguez Ocasio',
             'title': 'Fullstack (Frontend)',
-            'description': 'As a front-end developer, I specialized in designing key pages, such as the landing and base HTML, pivotal for our web interface. Collaboratively, I helped shape our front-end strategy, ensuring our efforts aligned seamlessly with project objectives. My role extended beyond coding, involving strategic planning to enhance user interaction and satisfaction. This collaborative effort led to a user-friendly and aesthetically pleasing interface, significantly enriching the overall online experienceof the patients and doctors.',
+            'description': 'As a front-end developer, I focused on designing essential website pages, including the landing and base HTML, to significantly enhance our web interface\'s appearance and functionality. Alongside my team, we developed a comprehensive strategic front-end plan, ensuring our actions perfectly aligned with our project\'s overarching goals. My role expanded beyond coding, involving strategic thinking and planning to improve user interaction and satisfaction. This collaborative effort resulted in a more user-friendly and visually appealing interface, improving the online experience for both patients and doctors.',
             'image': 'static/accounts/images/juanrod.png',
             'social_media': {
                 'github': 'https://github.com/JCRoooD',
