@@ -9,6 +9,8 @@ from django.conf import settings
 from django.utils import timezone
 from datetime import timedelta
 from django.views.decorators.http import require_POST
+from django.contrib import messages
+
 
 @login_required(login_url='login')
 def create_appointment(request):
@@ -82,18 +84,26 @@ def user_appointments(request):
     return render(request, 'appointments/appointments.html', context)
 
 @login_required
-@require_POST  # Ensure this view only handles POST requests
+@require_POST
 def delete_appointments(request):
     """
     This function handles the deletion of an appointment.
-    It receives a POST request with the appointment id, fetches the appointment,
-    and deletes it if the current user is the patient.
+    It receives a POST request with the appointment id and deletes the appointment
+    if the current user is either the patient or the doctor associated with the appointment.
     """
     appointment_id = request.POST.get('appointment_id')
     if appointment_id:
         try:
-            appointment = Appointment.objects.get(id=appointment_id, patient=request.user)
-            appointment.delete()
+            # Try to get the appointment where the current user is either the patient or the doctor
+            appointment = Appointment.objects.get(id=appointment_id)
+            if appointment.patient == request.user or appointment.doctor == request.user:
+                appointment.delete()
+                messages.success(request, "Appointment deleted successfully.")
+            else:
+                messages.error(request, "You do not have permission to delete this appointment.")
         except Appointment.DoesNotExist:
-            pass  # Handle the case where the appointment does not exist if needed
+            messages.error(request, "Appointment not found.")
+    else:
+        messages.error(request, "No appointment ID provided.")
+
     return redirect('appointments')
