@@ -72,7 +72,7 @@ def landing(request):
         {
             'name': 'Joshua Santiago Morales',
             'title': 'Fullstack (Backend)',
-            'description': 'In my role as Backend Engineer for HealHUb2.0 Web App, I designed and optimized the database to efficiently manage patient data and appointments. My efforts focused on ensuring data integrity, high performance, and scalability. Through optimized queries and security measures, I contributed to a seamless user experience and laid the groundwork for future enhancements, significantly impacting the app\'s success and reliability. ',
+            'description': 'In my role as Backend Engineer for HealHUb2.0 Web App, I meticulously designed and optimized the database architecture to efficiently manage patient data and appointments. My dedicated efforts were primarily focused on ensuring data integrity, achieving high performance, and guaranteeing scalability. Through the development of optimized queries and robust security measures, I significantly contributed to a seamless user experience and laid the strategic groundwork for future enhancements. This work had a profound impact on the app\'s overall success and reliability',
             'image': 'static/accounts/images/JoshuaSantiago.jpg',
             'social_media': {
                 'github': 'https://github.com/Joshua7792',

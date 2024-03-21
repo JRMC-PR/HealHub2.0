@@ -25,9 +25,6 @@ DEBUG = os.getenv('DEBUG') == 'True'
 GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY')
 
 
-# DEBUG = True
-
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
